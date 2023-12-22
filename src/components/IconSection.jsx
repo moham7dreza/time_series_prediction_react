@@ -12,7 +12,7 @@ export const IconSection = () => {
 
                 {/* Grid */}
                 <div className="my-8 md:my-16 grid grid-cols-3 sm:flex sm:justify-center gap-6 sm:gap-x-12 lg:gap-x-20">
-                    <a className="flex-shrink-0 transition hover:-translate-y-1" href="#">
+                    <a className="flex-shrink-0 transition hover:-translate-y-1">
                         <svg className="w-6 h-6 md:w-10 md:h-10 mx-auto sm:mx-0" width="48" height="55"
                              viewBox="0 0 48 55" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -24,7 +24,7 @@ export const IconSection = () => {
                         </svg>
                     </a>
 
-                    <a className="flex-shrink-0 transition hover:-translate-y-1" href="#">
+                    <a className="flex-shrink-0 transition hover:-translate-y-1">
                         <svg className="w-6 h-6 md:w-10 md:h-10 mx-auto sm:mx-0" width="48" height="42"
                              viewBox="0 0 48 42" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_1306_13)">
@@ -44,7 +44,7 @@ export const IconSection = () => {
                         </svg>
                     </a>
 
-                    <a className="flex-shrink-0 transition hover:-translate-y-1" href="#">
+                    <a className="flex-shrink-0 transition hover:-translate-y-1">
                         <svg className="w-6 h-6 md:w-10 md:h-10 mx-auto sm:mx-0" width="48" height="51"
                              viewBox="0 0 48 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_1314_2)">
@@ -66,7 +66,7 @@ export const IconSection = () => {
                         </svg>
                     </a>
 
-                    <a className="flex-shrink-0 transition hover:-translate-y-1" href="#">
+                    <a className="flex-shrink-0 transition hover:-translate-y-1">
                         <svg className="w-6 h-6 md:w-10 md:h-10 mx-auto sm:mx-0" width="48" height="48"
                              viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -81,7 +81,7 @@ export const IconSection = () => {
                         </svg>
                     </a>
 
-                    <a className="flex-shrink-0 transition hover:-translate-y-1" href="#">
+                    <a className="flex-shrink-0 transition hover:-translate-y-1">
                         <svg className="w-6 h-6 md:w-10 md:h-10 mx-auto sm:mx-0" width="48" height="48"
                              viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -93,7 +93,7 @@ export const IconSection = () => {
                         </svg>
                     </a>
 
-                    <a className="flex-shrink-0 transition hover:-translate-y-1" href="#">
+                    <a className="flex-shrink-0 transition hover:-translate-y-1">
                         <svg className="w-6 h-6 md:w-10 md:h-10 mx-auto sm:mx-0" width="48" height="50"
                              viewBox="0 0 48 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_1314_6)">
@@ -109,7 +109,7 @@ export const IconSection = () => {
                         </svg>
                     </a>
 
-                    <a className="flex-shrink-0 transition hover:-translate-y-1" href="#">
+                    <a className="flex-shrink-0 transition hover:-translate-y-1">
                         <svg className="w-6 h-6 md:w-10 md:h-10 mx-auto sm:mx-0" width="48" height="50"
                              viewBox="0 0 1280 1280" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -136,7 +136,7 @@ export const IconSection = () => {
                         </svg>
                     </a>
 
-                    <a className="flex-shrink-0 transition hover:-translate-y-1" href="#">
+                    <a className="flex-shrink-0 transition hover:-translate-y-1">
                         <svg className="w-6 h-6 md:w-10 md:h-10 mx-auto sm:mx-0" fill="none"
                              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70">
                             <mask id="a" style={{maskType: 'luminance'}} maskUnits="userSpaceOnUse" x="0" y="0"

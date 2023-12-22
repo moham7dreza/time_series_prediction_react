@@ -6,7 +6,7 @@ export const Footer = () => {
                 <div className="text-center">
                     <div>
                         <a className="flex-none text-xl font-semibold text-black dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                           href="#" aria-label="Brand">Brand</a>
+                           aria-label="Brand">Brand</a>
                     </div>
                     {/* End Col */}
 
@@ -20,7 +20,7 @@ export const Footer = () => {
                     {/* Social Brands */}
                     <div className="mt-3 space-x-2">
                         <a className="inline-flex justify-center items-center w-10 h-10 text-center text-gray-500 hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition dark:text-gray-500 dark:hover:text-gray-200 dark:hover:bg-gray-800"
-                           href="#">
+                        >
                             <svg className="flex-shrink-0 w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16"
                                  height="16" fill="currentColor" viewBox="0 0 16 16">
                                 <path
@@ -28,7 +28,7 @@ export const Footer = () => {
                             </svg>
                         </a>
                         <a className="inline-flex justify-center items-center w-10 h-10 text-center text-gray-500 hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition dark:text-gray-500 dark:hover:text-gray-200 dark:hover:bg-gray-800"
-                           href="#">
+                        >
                             <svg className="flex-shrink-0 w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16"
                                  height="16" fill="currentColor" viewBox="0 0 16 16">
                                 <path
@@ -36,7 +36,7 @@ export const Footer = () => {
                             </svg>
                         </a>
                         <a className="inline-flex justify-center items-center w-10 h-10 text-center text-gray-500 hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition dark:text-gray-500 dark:hover:text-gray-200 dark:hover:bg-gray-800"
-                           href="#">
+                        >
                             <svg className="flex-shrink-0 w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16"
                                  height="16" fill="currentColor" viewBox="0 0 16 16">
                                 <path
@@ -44,7 +44,7 @@ export const Footer = () => {
                             </svg>
                         </a>
                         <a className="inline-flex justify-center items-center w-10 h-10 text-center text-gray-500 hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition dark:text-gray-500 dark:hover:text-gray-200 dark:hover:bg-gray-800"
-                           href="#">
+                        >
                             <svg className="flex-shrink-0 w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="16"
                                  height="16" fill="currentColor" viewBox="0 0 16 16">
                                 <path
@@ -54,7 +54,7 @@ export const Footer = () => {
                     </div>
                     {/* End Social Brands */}
                 </div>
-                    {/* End Grid */}
+                {/* End Grid */}
             </footer>
         </>
     );

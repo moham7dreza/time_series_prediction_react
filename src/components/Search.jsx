@@ -28,7 +28,7 @@ export const Search = () => {
                                     </div>
                                     <div className="flex-[0_0_auto]">
                                         <a className="w-[46px] h-[46px] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                                           href="#">
+                                        >
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                  fill="currentColor" viewBox="0 0 16 16">
                                                 <path
@@ -68,7 +68,7 @@ export const Search = () => {
 
                         <div className="mt-10 sm:mt-20">
                             <a className="m-1 py-3 px-4 inline-flex items-center gap-x-2 text-sm rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                               href="#">
+                            >
                                 <svg className="flex-shrink-0 w-3 h-auto" xmlns="http://www.w3.org/2000/svg" width="16"
                                      height="16" fill="currentColor" viewBox="0 0 16 16">
                                     <path
@@ -77,7 +77,7 @@ export const Search = () => {
                                 Business
                             </a>
                             <a className="m-1 py-3 px-4 inline-flex items-center gap-x-2 text-sm rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                               href="#">
+                            >
                                 <svg className="flex-shrink-0 w-3 h-auto" xmlns="http://www.w3.org/2000/svg" width="16"
                                      height="16" fill="currentColor" viewBox="0 0 16 16">
                                     <path
@@ -88,7 +88,7 @@ export const Search = () => {
                                 Strategy
                             </a>
                             <a className="m-1 py-3 px-4 inline-flex items-center gap-x-2 text-sm rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                               href="#">
+                            >
                                 <svg className="flex-shrink-0 w-3 h-auto" xmlns="http://www.w3.org/2000/svg" width="16"
                                      height="16" fill="currentColor" viewBox="0 0 16 16">
                                     <path
@@ -97,7 +97,7 @@ export const Search = () => {
                                 Health
                             </a>
                             <a className="m-1 py-3 px-4 inline-flex items-center gap-x-2 text-sm rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                               href="#">
+                            >
                                 <svg className="flex-shrink-0 w-3 h-auto" xmlns="http://www.w3.org/2000/svg" width="16"
                                      height="16" fill="currentColor" viewBox="0 0 16 16">
                                     <path
@@ -106,7 +106,7 @@ export const Search = () => {
                                 Creative
                             </a>
                             <a className="m-1 py-3 px-4 inline-flex items-center gap-x-2 text-sm rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                               href="#">
+                            >
                                 <svg className="flex-shrink-0 w-3 h-auto" xmlns="http://www.w3.org/2000/svg" width="16"
                                      height="16" fill="currentColor" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
@@ -117,7 +117,7 @@ export const Search = () => {
                                 Environment
                             </a>
                             <a className="m-1 py-3 px-4 inline-flex items-center gap-x-2 text-sm rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                               href="#">
+                            >
                                 <svg className="flex-shrink-0 w-3 h-auto" xmlns="http://www.w3.org/2000/svg" width="16"
                                      height="16" fill="currentColor" viewBox="0 0 16 16">
                                     <path

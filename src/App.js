@@ -1,17 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from "./components/Header";
 import StockChart from "./components/StockChart";
 import {Footer} from "./components/Footer";
 import {Route, Routes, useNavigate} from "react-router-dom";
-import {toast, ToastContainer} from "react-toastify";
+import {ToastContainer} from "react-toastify";
 import {PredictionPropsForm} from "./components/PredictionPropsForm";
 import {Search} from "./components/Search";
 import {Dashboard} from "./components/Dashboard";
 import {IconSection} from "./components/IconSection";
 import {StockContext} from "./context/StockContext";
 import {useState} from "react";
-import axios from "axios";
 
 function App() {
     const [predict, setPredict] = useState({})

@@ -115,9 +115,10 @@ const StockChart = () => {
                             <div className="grid lg:grid-cols-1 gap-6">
                                 {/* Card */}
                                 <a className="group relative block rounded-xl dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                                   href="#">
+                                >
                                     <div key={index}>
-                                        <span className={'flex items-center justify-center'}>{ `${dataset[0]} close prices` }</span>
+                                        <span
+                                            className={'flex items-center justify-center'}>{`${dataset[0]} close prices`}</span>
                                         <canvas id={`stockChart-${index}`} width="400" height="200"></canvas>
                                     </div>
                                 </a>
