@@ -5,6 +5,7 @@ import {StockContext} from "../context/StockContext";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {PredictValidation} from "../validations/PredictValidation";
 import Datepicker from "react-tailwindcss-datepicker";
+import {Spinner} from "./Spinner";
 
 export const PredictionPropsForm = () => {
     const [models, setModels] = useState([])
@@ -14,7 +15,7 @@ export const PredictionPropsForm = () => {
     const [modelsNames] = useFetch('http://127.0.0.1:5000/models-name')
     const [seriesNames] = useFetch('http://127.0.0.1:5000/series-name')
 
-    const {submit, date, handleDateChange} = useContext(StockContext)
+    const {submit, date, handleDateChange, loading} = useContext(StockContext)
 
     useEffect(() => {
         if (datasetNames && datasetNames.status === 'OK') {
@@ -32,7 +33,7 @@ export const PredictionPropsForm = () => {
     }, [datasetNames, modelsNames, seriesNames])
     return (
         <>
-            <div className="max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+            {loading ? <Spinner/> : <div className="max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
                 <Formik initialValues={{n_steps: ''}} onSubmit={submit} validationSchema={PredictValidation}>
                     <Form>
                         <div className="space-y-12">
@@ -283,7 +284,7 @@ export const PredictionPropsForm = () => {
                         </div>
                     </Form>
                 </Formik>
-            </div>
+            </div>}
         </>
     )
         ;

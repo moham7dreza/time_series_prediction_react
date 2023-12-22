@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import StockChart from "./components/StockChart";
 import {Footer} from "./components/Footer";
 import {Route, Routes, useNavigate} from "react-router-dom";
-import {ToastContainer} from "react-toastify";
+import {toast, ToastContainer} from "react-toastify";
 import {PredictionPropsForm} from "./components/PredictionPropsForm";
 import {Search} from "./components/Search";
 import {Dashboard} from "./components/Dashboard";
@@ -13,6 +13,7 @@ import {useState} from "react";
 
 function App() {
     const [predict, setPredict] = useState({})
+    const [loading, setLoading] = useState(false)
     const nav = useNavigate()
 
     const [date, setDate] = useState({
@@ -26,6 +27,7 @@ function App() {
     }
 
     const submit = async (values) => {
+        setLoading(true)
         const data = {...values, ...date}
         const apiUrl = 'http://127.0.0.1:5000/make-prediction';
         try {
@@ -39,18 +41,22 @@ function App() {
             });
 
             if (!response.ok) {
+                setLoading(false)
                 throw new Error('Network response was not ok');
             }
 
             const responseData = await response.json();
             console.log('Response from Flask API:', responseData);
+            setLoading(false)
+            toast.success('predictions received successfully')
             nav('/search')
         } catch (error) {
+            setLoading(false)
             console.error('Error sending data to Flask API:', error);
         }
     }
     const context = {
-        predict, submit, date, handleDateChange
+        predict, submit, date, handleDateChange, loading, setLoading
     }
     return (
         <>

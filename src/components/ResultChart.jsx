@@ -1,13 +1,19 @@
 // StockChart.js
 
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import Chart from 'chart.js/auto';
 import {toast} from "react-toastify";
+import {StockContext} from "../context/StockContext";
+import {Spinner} from "./Spinner";
 
 const StockChart = () => {
     const [stockData, setStockData] = useState([]);
     const chartRefs = useRef(null);
+
+    const {setLoading, loading} = useContext(StockContext)
+
     useEffect(() => {
+        setLoading(true);
         const fetchData = async () => {
             try {
                 // Replace 'YOUR_API_KEY' and 'YOUR_STOCK_SYMBOL' with actual values
@@ -18,6 +24,7 @@ const StockChart = () => {
                 const response = await fetch(apiUrl);
                 const result = await response.json();
                 if (result.status === 'OK') {
+                    setLoading(false)
                     toast.success('Data loaded successfully')
                     const data = Object.entries(result.data)
                     // console.log(data.map(data => console.log(data[0])));
@@ -25,6 +32,7 @@ const StockChart = () => {
                     setStockData(data);
                 }
             } catch (error) {
+                setLoading(false)
                 console.error('Error fetching stock data:', error);
             }
         };
@@ -106,7 +114,7 @@ const StockChart = () => {
     return (
         <div>
             {
-                stockData.map((dataset, index) => (
+                loading ? <Spinner/> : stockData.map((dataset, index) => (
                     <section>
                         {/* Card Blog */
                         }
