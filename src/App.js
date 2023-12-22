@@ -10,6 +10,7 @@ import {Dashboard} from "./components/Dashboard";
 import {IconSection} from "./components/IconSection";
 import {StockContext} from "./context/StockContext";
 import {useState} from "react";
+import {transformObject} from "./helpers/Transformers";
 
 function App() {
     const [predict, setPredict] = useState({})
@@ -32,7 +33,8 @@ function App() {
 
     const submit = async (values) => {
         setLoading(true)
-        const data = {...values, ...date}
+        const data = transformObject({...values, ...date})
+
         const apiUrl = 'http://127.0.0.1:5000/make-prediction';
         try {
             const response = await fetch(apiUrl, {

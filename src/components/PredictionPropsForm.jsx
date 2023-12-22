@@ -33,29 +33,43 @@ export const PredictionPropsForm = () => {
 
     const PredictValidation = YUP.object().shape({
         n_steps: YUP.number().required('Number of Time Steps is required'),
-        ...series.reduce((acc, serie) => {
-            acc[serie] = YUP.boolean().required(`${serie} is required`);
-            return acc;
-        }, {}),
-        ...models.reduce((acc, model) => {
-            acc[model] = YUP.boolean().required(`${model} is required`);
-            return acc;
-        }, {}),
-        ...datasets.reduce((acc, dataset) => {
-            acc[dataset] = YUP.boolean().required(`${dataset} is required`);
-            return acc;
-        }, {}),
-    }).test('atLeastOneChecked', 'At least one checkbox must be selected', values => {
-        return datasets.some(dataset => values[dataset]) && series.some(serie => values[serie]) && models.some(model => values[model]);
-    });
+        // ...series.reduce((acc, serie) => {
+        //     acc[`serie-${serie}`] = YUP.boolean().required(`${serie} is required`);
+        //     return acc;
+        // }, {}),
+        // ...models.reduce((acc, model) => {
+        //     acc[`model-${model}`] = YUP.boolean().required(`${model} is required`);
+        //     return acc;
+        // }, {}),
+        // ...datasets.reduce((acc, dataset) => {
+        //     acc[`dataset-${dataset}`] = YUP.boolean().required(`${dataset} is required`);
+        //     return acc;
+        // }, {}),
+    })
+    //     .test('atLeastOneChecked', 'At least one checkbox must be selected', values => {
+    //     return (
+    //         datasets.some(dataset => values[`dataset-${dataset}`]) &&
+    //         series.some(serie => values[`serie-${serie}`]) &&
+    //         models.some(model => values[`model-${model}`])
+    //     );
+    // });
 
     const initialValues = {
         n_steps: '',
-        ...[...series, ...models, ...datasets].reduce((acc, obj) => {
-            acc[obj] = false;
+        ...series.reduce((acc, serie) => {
+            acc[`serie-${serie}`] = false;
+            return acc;
+        }, {}),
+        ...models.reduce((acc, model) => {
+            acc[`model-${model}`] = false;
+            return acc;
+        }, {}),
+        ...datasets.reduce((acc, dataset) => {
+            acc[`dataset-${dataset}`] = false;
             return acc;
         }, {}),
     };
+
 
     return (
         <>
@@ -83,17 +97,17 @@ export const PredictionPropsForm = () => {
                                                 {series.map((serie, index) => (
                                                     <div className="relative flex gap-x-3" key={index}>
                                                         <div className="flex h-6 items-center">
-                                                            <Field name={serie} type="checkbox"
+                                                            <Field name={`serie-${serie}`} type="checkbox"
                                                                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
                                                         </div>
                                                         <div className="text-sm leading-6">
-                                                            <label htmlFor={serie}
+                                                            <label htmlFor={`serie-${serie}`}
                                                                    className="font-medium text-gray-900">{serie}</label>
                                                             {/*<p className="text-gray-500">Get notified when someones posts a*/}
                                                             {/*    comment*/}
                                                             {/*    on a*/}
                                                             {/*    posting.</p>*/}
-                                                            <ErrorMessage name={serie}>
+                                                            <ErrorMessage name={`serie-${serie}`}>
                                                                 {message => (<div
                                                                     className={'text-red-500 my-2'}>{message}</div>)}
                                                             </ErrorMessage>
@@ -115,17 +129,17 @@ export const PredictionPropsForm = () => {
                                                 {datasets.map((dataset, index) => (
                                                     <div className="relative flex gap-x-3" key={index}>
                                                         <div className="flex h-6 items-center">
-                                                            <Field name={dataset} type="checkbox"
+                                                            <Field name={`dataset-${dataset}`} type="checkbox"
                                                                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
                                                         </div>
                                                         <div className="text-sm leading-6">
-                                                            <label htmlFor={dataset}
+                                                            <label htmlFor={`dataset-${dataset}`}
                                                                    className="font-medium text-gray-900">{dataset}</label>
                                                             {/*<p className="text-gray-500">Get notified when someones posts a*/}
                                                             {/*    comment*/}
                                                             {/*    on a*/}
                                                             {/*    posting.</p>*/}
-                                                            <ErrorMessage name={dataset}>
+                                                            <ErrorMessage name={`dataset-${dataset}`}>
                                                                 {message => (<div
                                                                     className={'text-red-500 my-2'}>{message}</div>)}
                                                             </ErrorMessage>
@@ -147,17 +161,17 @@ export const PredictionPropsForm = () => {
                                                 {models.map((model, index) => (
                                                     <div className="relative flex gap-x-3" key={index}>
                                                         <div className="flex h-6 items-center">
-                                                            <Field name={model} type="checkbox"
+                                                            <Field name={`model-${model}`} type="checkbox"
                                                                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
                                                         </div>
                                                         <div className="text-sm leading-6">
-                                                            <label htmlFor={model}
+                                                            <label htmlFor={`model-${model}`}
                                                                    className="font-medium text-gray-900">{model}</label>
                                                             {/*<p className="text-gray-500">Get notified when someones posts a*/}
                                                             {/*    comment*/}
                                                             {/*    on a*/}
                                                             {/*    posting.</p>*/}
-                                                            <ErrorMessage name={model}>
+                                                            <ErrorMessage name={`model-${model}`}>
                                                                 {message => (<div
                                                                     className={'text-red-500 my-2'}>{message}</div>)}
                                                             </ErrorMessage>
