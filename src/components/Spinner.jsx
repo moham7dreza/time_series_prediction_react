@@ -7,17 +7,7 @@ export const Spinner = () => {
             <div className="App">
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo"/>
-                    <p>
-                        Edit <code>src/App.js</code> and save to reload.
-                    </p>
-                    <a
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Learn React
-                    </a>
+                    <h1 className={'text-2xl text-gray-400 font-bold capitalize mt-10'}>Data is begin to fetching from API application ...</h1>
                 </header>
             </div>
         </>

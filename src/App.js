@@ -14,6 +14,10 @@ import {useState} from "react";
 function App() {
     const [predict, setPredict] = useState({})
     const [loading, setLoading] = useState(false)
+    const [models, setModels] = useState([])
+    const [datasets, setDatasets] = useState([])
+    const [series, setSeries] = useState([])
+
     const nav = useNavigate()
 
     const [date, setDate] = useState({
@@ -56,7 +60,12 @@ function App() {
         }
     }
     const context = {
-        predict, submit, date, handleDateChange, loading, setLoading
+        predict, submit, date, handleDateChange, loading, setLoading, models,
+        setModels,
+        datasets,
+        setDatasets,
+        series,
+        setSeries,
     }
     return (
         <>

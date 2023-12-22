@@ -1,40 +1,68 @@
-import {useContext, useEffect, useState} from "react";
-import {toast} from "react-toastify";
+import {useContext, useEffect} from "react";
 import {useFetch} from "../customHooks/useFetch";
 import {StockContext} from "../context/StockContext";
 import {ErrorMessage, Field, Form, Formik} from "formik";
-import {PredictValidation} from "../validations/PredictValidation";
+// import {PredictValidation} from "../validations/PredictValidation";
 import Datepicker from "react-tailwindcss-datepicker";
 import {Spinner} from "./Spinner";
+import * as YUP from "yup";
 
 export const PredictionPropsForm = () => {
-    const [models, setModels] = useState([])
-    const [datasets, setDatasets] = useState([])
-    const [series, setSeries] = useState([])
+    const {
+        submit, date, handleDateChange, loading, models, setModels, datasets, setDatasets, series, setSeries,
+    } = useContext(StockContext)
+
     const [datasetNames] = useFetch('http://127.0.0.1:5000/datasets-name')
     const [modelsNames] = useFetch('http://127.0.0.1:5000/models-name')
     const [seriesNames] = useFetch('http://127.0.0.1:5000/series-name')
 
-    const {submit, date, handleDateChange, loading} = useContext(StockContext)
-
     useEffect(() => {
         if (datasetNames && datasetNames.status === 'OK') {
-            toast.success('Dataset names fetched')
+            // toast.success('Dataset names fetched')
             setDatasets(datasetNames.data)
         }
         if (modelsNames && modelsNames.status === 'OK') {
-            toast.info('models names fetched')
+            // toast.info('models names fetched')
             setModels(modelsNames.data)
         }
         if (seriesNames && seriesNames.status === 'OK') {
-            toast.info('series names fetched')
+            // toast.info('series names fetched')
             setSeries(seriesNames.data)
         }
     }, [datasetNames, modelsNames, seriesNames])
+
+    const PredictValidation = YUP.object().shape({
+        n_steps: YUP.number().required('Number of Time Steps is required'),
+        ...series.reduce((acc, serie) => {
+            acc[serie] = YUP.boolean().required(`${serie} is required`);
+            return acc;
+        }, {}),
+        ...models.reduce((acc, model) => {
+            acc[model] = YUP.boolean().required(`${model} is required`);
+            return acc;
+        }, {}),
+        ...datasets.reduce((acc, dataset) => {
+            acc[dataset] = YUP.boolean().required(`${dataset} is required`);
+            return acc;
+        }, {}),
+    }).test('atLeastOneChecked', 'At least one checkbox must be selected', values => {
+        return datasets.some(dataset => values[dataset]) && series.some(serie => values[serie]) && models.some(model => values[model]);
+    });
+
+    const initialValues = {
+        n_steps: '',
+        ...[...series, ...models, ...datasets].reduce((acc, obj) => {
+            acc[obj] = false;
+            return acc;
+        }, {}),
+    };
+
     return (
         <>
             {loading ? <Spinner/> : <div className="max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-                <Formik initialValues={{n_steps: ''}} onSubmit={submit} validationSchema={PredictValidation}>
+                <Formik
+                    initialValues={initialValues}
+                    onSubmit={submit} validationSchema={PredictValidation}>
                     <Form>
                         <div className="space-y-12">
                             <div className="border-b border-gray-900/10 pb-12">
@@ -188,7 +216,7 @@ export const PredictionPropsForm = () => {
                                                     {message => (<div className={'text-red-500 my-2'}>{message}</div>)}
                                                 </ErrorMessage>
                                             </div>
-                                            <div className="sm:col-span-4">
+                                            <div className="sm:col-span-6">
                                                 <Datepicker
                                                     value={date}
                                                     onChange={handleDateChange}
