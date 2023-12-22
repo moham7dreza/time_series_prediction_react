@@ -4,13 +4,18 @@ import {useFetch} from "../customHooks/useFetch";
 import {StockContext} from "../context/StockContext";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {PredictValidation} from "../validations/PredictValidation";
+import Datepicker from "react-tailwindcss-datepicker";
 
 export const PredictionPropsForm = () => {
     const [models, setModels] = useState([])
     const [datasets, setDatasets] = useState([])
+    const [series, setSeries] = useState([])
     const [datasetNames] = useFetch('http://127.0.0.1:5000/datasets-name')
     const [modelsNames] = useFetch('http://127.0.0.1:5000/models-name')
-    const {submit} = useContext(StockContext)
+    const [seriesNames] = useFetch('http://127.0.0.1:5000/series-name')
+
+    const {submit, date, handleDateChange} = useContext(StockContext)
+
     useEffect(() => {
         if (datasetNames && datasetNames.status === 'OK') {
             toast.success('Dataset names fetched')
@@ -20,7 +25,11 @@ export const PredictionPropsForm = () => {
             toast.info('models names fetched')
             setModels(modelsNames.data)
         }
-    }, [datasetNames, modelsNames])
+        if (seriesNames && seriesNames.status === 'OK') {
+            toast.info('series names fetched')
+            setSeries(seriesNames.data)
+        }
+    }, [datasetNames, modelsNames, seriesNames])
     return (
         <>
             <div className="max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
@@ -38,6 +47,38 @@ export const PredictionPropsForm = () => {
                                     <div className="mt-10 space-y-10">
                                         <fieldset>
                                             <legend className="text-sm font-semibold leading-6 text-gray-900">Choice
+                                                Series
+                                                ...
+                                            </legend>
+                                            <div className="mt-6 space-y-6">
+                                                {series.map((serie, index) => (
+                                                    <div className="relative flex gap-x-3" key={index}>
+                                                        <div className="flex h-6 items-center">
+                                                            <Field name={serie} type="checkbox"
+                                                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
+                                                        </div>
+                                                        <div className="text-sm leading-6">
+                                                            <label htmlFor={serie}
+                                                                   className="font-medium text-gray-900">{serie}</label>
+                                                            {/*<p className="text-gray-500">Get notified when someones posts a*/}
+                                                            {/*    comment*/}
+                                                            {/*    on a*/}
+                                                            {/*    posting.</p>*/}
+                                                            <ErrorMessage name={serie}>
+                                                                {message => (<div
+                                                                    className={'text-red-500 my-2'}>{message}</div>)}
+                                                            </ErrorMessage>
+                                                        </div>
+                                                    </div>
+                                                ))}
+
+
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div className="mt-10 space-y-10">
+                                        <fieldset>
+                                            <legend className="text-sm font-semibold leading-6 text-gray-900">Choice
                                                 Datasets
                                                 ...
                                             </legend>
@@ -45,17 +86,17 @@ export const PredictionPropsForm = () => {
                                                 {datasets.map((dataset, index) => (
                                                     <div className="relative flex gap-x-3" key={index}>
                                                         <div className="flex h-6 items-center">
-                                                            <Field name={`dataset-${index}`} type="checkbox"
+                                                            <Field name={dataset} type="checkbox"
                                                                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
                                                         </div>
                                                         <div className="text-sm leading-6">
-                                                            <label htmlFor={`dataset-${index}`}
+                                                            <label htmlFor={dataset}
                                                                    className="font-medium text-gray-900">{dataset}</label>
                                                             {/*<p className="text-gray-500">Get notified when someones posts a*/}
                                                             {/*    comment*/}
                                                             {/*    on a*/}
                                                             {/*    posting.</p>*/}
-                                                            <ErrorMessage name={`dataset-${index}`}>
+                                                            <ErrorMessage name={dataset}>
                                                                 {message => (<div
                                                                     className={'text-red-500 my-2'}>{message}</div>)}
                                                             </ErrorMessage>
@@ -77,17 +118,17 @@ export const PredictionPropsForm = () => {
                                                 {models.map((model, index) => (
                                                     <div className="relative flex gap-x-3" key={index}>
                                                         <div className="flex h-6 items-center">
-                                                            <Field name={`models-${index}`} type="checkbox"
+                                                            <Field name={model} type="checkbox"
                                                                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
                                                         </div>
                                                         <div className="text-sm leading-6">
-                                                            <label htmlFor={`models-${index}`}
+                                                            <label htmlFor={model}
                                                                    className="font-medium text-gray-900">{model}</label>
                                                             {/*<p className="text-gray-500">Get notified when someones posts a*/}
                                                             {/*    comment*/}
                                                             {/*    on a*/}
                                                             {/*    posting.</p>*/}
-                                                            <ErrorMessage name={`models-${index}`}>
+                                                            <ErrorMessage name={model}>
                                                                 {message => (<div
                                                                     className={'text-red-500 my-2'}>{message}</div>)}
                                                             </ErrorMessage>
@@ -134,19 +175,24 @@ export const PredictionPropsForm = () => {
                                         </legend>
                                         <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                                             <div className="sm:col-span-4">
-                                                <label htmlFor="first-name"
+                                                <label htmlFor="n_steps"
                                                        className="block text-sm font-medium leading-6 text-gray-900">Number
                                                     of Time Steps</label>
                                                 <div className="mt-2">
                                                     <Field type="text" name="n_steps"
                                                            autoComplete="3"
-                                                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+                                                           className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
                                                 </div>
                                                 <ErrorMessage name={'n_steps'}>
                                                     {message => (<div className={'text-red-500 my-2'}>{message}</div>)}
                                                 </ErrorMessage>
                                             </div>
-
+                                            <div className="sm:col-span-4">
+                                                <Datepicker
+                                                    value={date}
+                                                    onChange={handleDateChange}
+                                                />
+                                            </div>
                                             {/*<div className="sm:col-span-3">*/}
                                             {/*    <label htmlFor="last-name"*/}
                                             {/*           className="block text-sm font-medium leading-6 text-gray-900">Last*/}
