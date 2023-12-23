@@ -11,9 +11,11 @@ import {IconSection} from "./components/IconSection";
 import {StockContext} from "./context/StockContext";
 import {useState} from "react";
 import {transformObject} from "./helpers/Transformers";
+import ResultCharts from "./components/ResultCharts";
+import ResultCharts2 from "./components/ResultCharts2";
 
 function App() {
-    const [predict, setPredict] = useState({})
+    const [predicts, setPredicts] = useState({})
     const [loading, setLoading] = useState(false)
     const [models, setModels] = useState([])
     const [datasets, setDatasets] = useState([])
@@ -34,7 +36,7 @@ function App() {
     const submit = async (values) => {
         setLoading(true)
         const data = transformObject({...values, ...date})
-
+        // console.log(data)
         const apiUrl = 'http://127.0.0.1:5000/make-prediction';
         try {
             const response = await fetch(apiUrl, {
@@ -54,15 +56,16 @@ function App() {
             const responseData = await response.json();
             console.log('Response from Flask API:', responseData);
             setLoading(false)
+            setPredicts(responseData.data)
             toast.success('predictions received successfully')
-            nav('/search')
+            nav('/predicts')
         } catch (error) {
             setLoading(false)
             console.error('Error sending data to Flask API:', error);
         }
     }
     const context = {
-        predict, submit, date, handleDateChange, loading, setLoading, models,
+        predicts, submit, date, handleDateChange, loading, setLoading, models,
         setModels,
         datasets,
         setDatasets,
@@ -80,6 +83,7 @@ function App() {
                     <Route path={'/search'} element={<Search/>}/>
                     <Route path={'/prediction-props'} element={<PredictionPropsForm/>}/>
                     <Route path={'/load-datasets'} element={<StockChart/>}/>
+                    <Route path={'/predicts'} element={<ResultCharts2/>}/>
                 </Routes>
                 {/*<div className="App">*/}
                 {/*    <header className="w-60 h-60 flex items-center justify-center">*/}

@@ -6,39 +6,11 @@ import {toast} from "react-toastify";
 import {StockContext} from "../context/StockContext";
 import {Spinner} from "./Spinner";
 
-const StockChart = () => {
+const ResultCharts = () => {
     const [stockData, setStockData] = useState([]);
     const chartRefs = useRef(null);
 
-    const {setLoading, loading} = useContext(StockContext)
-
-    useEffect(() => {
-        setLoading(true);
-        const fetchData = async () => {
-            try {
-                // Replace 'YOUR_API_KEY' and 'YOUR_STOCK_SYMBOL' with actual values
-                // const apiKey = 'YOUR_API_KEY';
-                // const stockSymbol = 'YOUR_STOCK_SYMBOL';
-                // const apiUrl = `https://financialmodelingprep.com/api/v3/historical-price-full/${stockSymbol}?apikey=${apiKey}`;
-                const apiUrl = 'http://127.0.0.1:5000/datasets'
-                const response = await fetch(apiUrl);
-                const result = await response.json();
-                if (result.status === 'OK') {
-                    setLoading(false)
-                    toast.success('Data loaded successfully')
-                    const data = Object.entries(result.data)
-                    // console.log(data.map(data => console.log(data[0])));
-                    // Assuming the API response has a structure like { historical: [] }
-                    setStockData(data);
-                }
-            } catch (error) {
-                setLoading(false)
-                console.error('Error fetching stock data:', error);
-            }
-        };
-
-        fetchData();
-    }, []);
+    const {setLoading, loading, predicts, datasets, series, models} = useContext(StockContext)
 
     useEffect(() => {
         // Initialize chartRefs.current as an empty array
@@ -65,9 +37,9 @@ const StockChart = () => {
         });
 
         // Render new charts
-        chartRefs.current = stockData.map((dataset, index) => {
+        chartRefs.current = Object.keys(predicts).length > 0 && predicts.map((dataset, index) => {
             // console.log(Object.values(dataset[1]))
-            const ctx = document.getElementById(`stockChart-${index}`).getContext('2d');
+            const ctx = document.getElementById(`resultChart-${index}`).getContext('2d');
             const title = dataset[0]
             const data = Object.values(dataset[1])
             return new Chart(ctx, {
@@ -88,14 +60,6 @@ const StockChart = () => {
                         },
                     ],
                 },
-                // options: {
-                //     scales: {
-                //         x: {
-                //             type: 'linear',
-                //             position: 'bottom',
-                //         },
-                //     },
-                // },
                 options: {
                     animation: false,
                     plugins: {
@@ -127,7 +91,7 @@ const StockChart = () => {
                                     <div key={index}>
                                         <span
                                             className={'flex items-center justify-center'}>{`${dataset[0]} close prices`}</span>
-                                        <canvas id={`stockChart-${index}`} width="400" height="200"></canvas>
+                                        <canvas id={`resultChart-${index}`} width="400" height="200"></canvas>
                                     </div>
                                 </a>
                                 {/* End Card */}
@@ -143,4 +107,4 @@ const StockChart = () => {
     );
 };
 
-export default StockChart;
+export default ResultCharts;
