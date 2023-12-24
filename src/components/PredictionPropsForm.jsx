@@ -9,12 +9,13 @@ import * as YUP from "yup";
 
 export const PredictionPropsForm = () => {
     const {
-        submit, date, handleDateChange, loading, models, setModels, datasets, setDatasets, series, setSeries,
+        submit, date, handleDateChange, loading, models, setModels, datasets, setDatasets, series, setSeries, prices, setPrices
     } = useContext(StockContext)
 
     const [datasetNames] = useFetch('http://127.0.0.1:5000/datasets-name')
     const [modelsNames] = useFetch('http://127.0.0.1:5000/models-name')
     const [seriesNames] = useFetch('http://127.0.0.1:5000/series-name')
+    const [pricesNames] = useFetch('http://127.0.0.1:5000/prices-name')
 
     useEffect(() => {
         if (datasetNames && datasetNames.status === 'OK') {
@@ -29,7 +30,11 @@ export const PredictionPropsForm = () => {
             // toast.info('series names fetched')
             setSeries(seriesNames.data)
         }
-    }, [datasetNames, modelsNames, seriesNames])
+        if (pricesNames && pricesNames.status === 'OK') {
+            // toast.info('series names fetched')
+            setPrices(pricesNames.data)
+        }
+    }, [datasetNames, modelsNames, seriesNames, pricesNames])
 
     const PredictValidation = YUP.object().shape({
         n_steps: YUP.number().required('Number of Time Steps is required'),
@@ -66,6 +71,10 @@ export const PredictionPropsForm = () => {
         }, {}),
         ...datasets.reduce((acc, dataset) => {
             acc[`dataset-${dataset}`] = false;
+            return acc;
+        }, {}),
+        ...prices.reduce((acc, price) => {
+            acc[`price-${price}`] = false;
             return acc;
         }, {}),
     };
@@ -140,6 +149,38 @@ export const PredictionPropsForm = () => {
                                                             {/*    on a*/}
                                                             {/*    posting.</p>*/}
                                                             <ErrorMessage name={`dataset-${dataset}`}>
+                                                                {message => (<div
+                                                                    className={'text-red-500 my-2'}>{message}</div>)}
+                                                            </ErrorMessage>
+                                                        </div>
+                                                    </div>
+                                                ))}
+
+
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div className="mt-10 space-y-10">
+                                        <fieldset>
+                                            <legend className="text-sm font-semibold leading-6 text-gray-900">Choice
+                                                Prices
+                                                ...
+                                            </legend>
+                                            <div className="mt-6 space-y-6">
+                                                {prices.map((price, index) => (
+                                                    <div className="relative flex gap-x-3" key={index}>
+                                                        <div className="flex h-6 items-center">
+                                                            <Field name={`price-${price}`} type="checkbox"
+                                                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
+                                                        </div>
+                                                        <div className="text-sm leading-6">
+                                                            <label htmlFor={`price-${price}`}
+                                                                   className="font-medium text-gray-900">{price}</label>
+                                                            {/*<p className="text-gray-500">Get notified when someones posts a*/}
+                                                            {/*    comment*/}
+                                                            {/*    on a*/}
+                                                            {/*    posting.</p>*/}
+                                                            <ErrorMessage name={`price-${price}`}>
                                                                 {message => (<div
                                                                     className={'text-red-500 my-2'}>{message}</div>)}
                                                             </ErrorMessage>

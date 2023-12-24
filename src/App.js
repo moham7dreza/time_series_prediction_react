@@ -20,6 +20,7 @@ function App() {
     const [models, setModels] = useState([])
     const [datasets, setDatasets] = useState([])
     const [series, setSeries] = useState([])
+    const [prices, setPrices] = useState([])
 
     const nav = useNavigate()
 
@@ -70,7 +71,7 @@ function App() {
         datasets,
         setDatasets,
         series,
-        setSeries,
+        setSeries, prices, setPrices
     }
     return (
         <>
