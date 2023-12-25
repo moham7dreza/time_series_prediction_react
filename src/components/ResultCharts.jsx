@@ -1,16 +1,14 @@
 // StockChart.js
 
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef} from 'react';
 import Chart from 'chart.js/auto';
-import {toast} from "react-toastify";
 import {StockContext} from "../context/StockContext";
 import {Spinner} from "./Spinner";
 
 const ResultCharts = () => {
-    const [stockData, setStockData] = useState([]);
     const chartRefs = useRef(null);
 
-    const {setLoading, loading, predicts, datasets, series, models} = useContext(StockContext)
+    const {setLoading, loading, predicts, datasets, series, models, prices} = useContext(StockContext)
 
     useEffect(() => {
         // Initialize chartRefs.current as an empty array
@@ -26,7 +24,17 @@ const ResultCharts = () => {
                 }
             });
         };
-    }, [stockData]);
+    }, [predicts]);
+
+    // Function to generate random color
+    const getRandomColor = () => {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    };
 
     const renderCharts = () => {
         // Clear existing charts
@@ -37,72 +45,118 @@ const ResultCharts = () => {
         });
 
         // Render new charts
-        chartRefs.current = Object.keys(predicts).length > 0 && predicts.map((dataset, index) => {
-            // console.log(Object.values(dataset[1]))
-            const ctx = document.getElementById(`resultChart-${index}`).getContext('2d');
-            const title = dataset[0]
-            const data = Object.values(dataset[1])
-            return new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: data.map((data) => {
-                        // console.log(data)
-                        // Format the date to show only the date without the time
-                        return new Date(data.date).toISOString().split('T')[0];
-                    }),
-                    datasets: [
-                        {
-                            label: `${title} Stock Price`,
-                            data: data.map((data) => data.close),
-                            borderColor: 'rgba(75, 192, 192, 1)',
-                            borderWidth: 2,
-                            fill: false,
-                        },
-                    ],
-                },
-                options: {
-                    animation: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            enabled: false
+        Object.keys(predicts).forEach((dataset) => {
+            const datasetData = predicts[dataset];
+            // console.log(datasetData)
+            Object.keys(datasetData).forEach((serie) => {
+                const serieData = datasetData[serie];
+                // console.log(serieData)
+                if (serieData) {
+                    Object.keys(serieData).forEach((model) => {
+                        const modelData = serieData[model]
+                        // console.log(modelData)
+                        if (modelData) {
+                            Object.keys(modelData).forEach((priceType) => {
+                                const priceData = modelData[priceType]
+                                // console.log(priceData)
+                                if (priceData) {
+                                    const ctx = document.getElementById(
+                                        `${dataset}-${serie}-${model}-${priceType}-chart`
+                                    );
+
+                                    const seriesData = serieData[model][priceType];
+                                    console.log(seriesData)
+                                    const seriesLabels = Object.values(seriesData).map((entry) => new Date(entry.date).toISOString().split('T')[0]);
+
+                                    const chart = new Chart(ctx, {
+                                        type: 'line',
+                                        data: {
+                                            labels: seriesLabels,
+                                            datasets: [{
+                                                label: `${dataset} ${serie} - ${model} - ${priceType}`,
+                                                data: Object.values(seriesData).map(data => data.actual),
+                                                fill: false,
+                                                borderColor: getRandomColor(),
+                                            }],
+                                        },
+                                        options: {
+                                            animation: false,
+                                            plugins: {
+                                                legend: {
+                                                    display: false
+                                                },
+                                                tooltip: {
+                                                    enabled: false
+                                                }
+                                            }
+                                        },
+                                    });
+                                    chartRefs.current.push(chart)
+                                }
+                                // console.log('passed')
+                            });
                         }
-                    }
-                },
+
+                    });
+                }
             });
         });
+
     };
 
     return (
         <div>
-            {
-                loading ? <Spinner/> : stockData.map((dataset, index) => (
-                    <section>
-                        {/* Card Blog */
-                        }
-                        <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-                            {/* Grid */}
-                            <div className="grid lg:grid-cols-1 gap-6">
-                                {/* Card */}
-                                <a className="group relative block rounded-xl dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                                >
-                                    <div key={index}>
+            {/* Render chart canvases for each dataset, prediction type, model, and price type */}
+            {loading ? <Spinner/> : Object.keys(predicts).map((dataset) => {
+                const datasetData = predicts[dataset];
+
+                return datasetData ?
+                    Object.keys(datasetData).map((serie) => {
+                        const serieData = datasetData[serie];
+
+                        return serieData
+                            ? Object.keys(serieData).map((model) => {
+                                const modelData = serieData[model];
+
+                                return modelData
+                                    ? Object.keys(modelData).map((priceType) => {
+                                        const priceData = modelData[priceType];
+
+                                        return priceData
+                                            ? (
+                                                <section>
+                                                    {/* Card Blog */
+                                                    }
+                                                    <div
+                                                        className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+                                                        {/* Grid */}
+                                                        <div className="grid lg:grid-cols-1 gap-6">
+                                                            {/* Card */}
+                                                            <a className="group relative block rounded-xl dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                                            >
+                                                                <div>
                                         <span
-                                            className={'flex items-center justify-center'}>{`${dataset[0]} close prices`}</span>
-                                        <canvas id={`resultChart-${index}`} width="400" height="200"></canvas>
-                                    </div>
-                                </a>
-                                {/* End Card */}
-                            </div>
-                            {/* End Grid */}
-                        </div>
-                        {/* End Card Blog */
-                        }
-                    </section>
-                ))
-            }
+                                            className={'flex items-center justify-center'}>{`${dataset}-${serie}-${model}-${priceType}-chart`}</span>
+                                                                    <canvas
+                                                                        key={`${dataset}-${serie}-${model}-${priceType}-chart`}
+                                                                        id={`${dataset}-${serie}-${model}-${priceType}-chart`}
+                                                                        width="400"
+                                                                        height="200"
+                                                                    />
+                                                                </div>
+                                                            </a>
+                                                            {/* End Card */}
+                                                        </div>
+                                                        {/* End Grid */}
+                                                    </div>
+                                                    {/* End Card Blog */
+                                                    }
+                                                </section>
+                                            ) : null;
+                                    }) : null
+                            }) : null;
+                    }) : null
+            })}
         </div>
     );
 };

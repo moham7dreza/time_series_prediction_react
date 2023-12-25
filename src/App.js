@@ -9,7 +9,7 @@ import {Search} from "./components/Search";
 import {Dashboard} from "./components/Dashboard";
 import {IconSection} from "./components/IconSection";
 import {StockContext} from "./context/StockContext";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {transformObject} from "./helpers/Transformers";
 import ResultCharts from "./components/ResultCharts";
 import ResultCharts2 from "./components/ResultCharts2";
@@ -28,6 +28,218 @@ function App() {
         startDate: new Date('2017-11-06').toISOString().split('T')[0],
         endDate: new Date('2022-12-06').toISOString().split('T')[0]
     });
+
+    // useEffect(() => {
+    //     const data = {
+    //         "Car": {
+    //             "multivariate": {
+    //                 "LSTM": {
+    //                     "<CLOSE>": {
+    //                         "1": {
+    //                             "actual": 276632.5,
+    //                             "date": "Sat, 10 Jun 2017 00:00:00 GMT",
+    //                             "predict": 275644.78125
+    //                         },
+    //                         "2": {
+    //                             "actual": 41878.33,
+    //                             "date": "Sat, 17 Jun 2017 00:00:00 GMT",
+    //                             "predict": 46692.9609375
+    //                         }
+    //                         ,"3": {
+    //                             "actual": 41878.33,
+    //                             "date": "Sat, 24 Jun 2017 00:00:00 GMT",
+    //                             "predict": 46692.9609375
+    //                         }
+    //                     },
+    //                     "<HIGH>": {
+    //                         "1": {
+    //                             "actual": 276632.5,
+    //                             "date": "Sat, 10 Jun 2017 00:00:00 GMT",
+    //                             "predict": 275644.78125
+    //                         },
+    //                         "2": {
+    //                             "actual": 41878.33,
+    //                             "date": "Sat, 17 Jun 2017 00:00:00 GMT",
+    //                             "predict": 46692.9609375
+    //                         }
+    //                         ,"3": {
+    //                             "actual": 41878.33,
+    //                             "date": "Sat, 24 Jun 2017 00:00:00 GMT",
+    //                             "predict": 46692.9609375
+    //                         }
+    //                     }
+    //                 }
+    //             },
+    //             "univariate": {
+    //                 "BLSTM": {
+    //                     "<CLOSE>": {
+    //                         "1": {
+    //                             "actual": 276632.5,
+    //                             "date": "Sat, 10 Jun 2017 00:00:00 GMT",
+    //                             "predict": 275644.78125
+    //                         },
+    //                         "2": {
+    //                             "actual": 41878.33,
+    //                             "date": "Sat, 17 Jun 2017 00:00:00 GMT",
+    //                             "predict": 46692.9609375
+    //                         }
+    //                         ,"3": {
+    //                             "actual": 41878.33,
+    //                             "date": "Sat, 24 Jun 2017 00:00:00 GMT",
+    //                             "predict": 46692.9609375
+    //                         }
+    //                     },
+    //                     "<HIGH>": {
+    //                         "1": {
+    //                             "actual": 276632.5,
+    //                             "date": "Sat, 10 Jun 2017 00:00:00 GMT",
+    //                             "predict": 275644.78125
+    //                         },
+    //                         "2": {
+    //                             "actual": 41878.33,
+    //                             "date": "Sat, 17 Jun 2017 00:00:00 GMT",
+    //                             "predict": 46692.9609375
+    //                         }
+    //                         ,"3": {
+    //                             "actual": 41878.33,
+    //                             "date": "Sat, 24 Jun 2017 00:00:00 GMT",
+    //                             "predict": 46692.9609375
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         },
+    //         "Dollar": {
+    //             "multivariate": null,
+    //             "univariate": {
+    //                 "CNN": {
+    //                     "<CLOSE>": {
+    //                         "1": {
+    //                             "actual": 276632.5,
+    //                             "date": "Sat, 10 Jun 2017 00:00:00 GMT",
+    //                             "predict": 275644.78125
+    //                         },
+    //                         "2": {
+    //                             "actual": 41878.33,
+    //                             "date": "Sat, 17 Jun 2017 00:00:00 GMT",
+    //                             "predict": 46692.9609375
+    //                         }
+    //                         ,"3": {
+    //                             "actual": 41878.33,
+    //                             "date": "Sat, 24 Jun 2017 00:00:00 GMT",
+    //                             "predict": 46692.9609375
+    //                         }
+    //                     },
+    //                     "<HIGH>": {
+    //                         "1": {
+    //                             "actual": 276632.5,
+    //                             "date": "Sat, 10 Jun 2017 00:00:00 GMT",
+    //                             "predict": 275644.78125
+    //                         },
+    //                         "2": {
+    //                             "actual": 41878.33,
+    //                             "date": "Sat, 17 Jun 2017 00:00:00 GMT",
+    //                             "predict": 46692.9609375
+    //                         }
+    //                         ,"3": {
+    //                             "actual": 41878.33,
+    //                             "date": "Sat, 24 Jun 2017 00:00:00 GMT",
+    //                             "predict": 46692.9609375
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         },
+    //         "Gold": {
+    //             "multivariate": null,
+    //             "univariate": {
+    //                 "RNN": {
+    //                     "<CLOSE>": {
+    //                         "1": {
+    //                             "actual": 276632.5,
+    //                             "date": "Sat, 10 Jun 2017 00:00:00 GMT",
+    //                             "predict": 275644.78125
+    //                         },
+    //                         "2": {
+    //                             "actual": 41878.33,
+    //                             "date": "Sat, 17 Jun 2017 00:00:00 GMT",
+    //                             "predict": 46692.9609375
+    //                         }
+    //                         ,"3": {
+    //                             "actual": 41878.33,
+    //                             "date": "Sat, 24 Jun 2017 00:00:00 GMT",
+    //                             "predict": 46692.9609375
+    //                         }
+    //                     },
+    //                     "<HIGH>": {
+    //                         "1": {
+    //                             "actual": 276632.5,
+    //                             "date": "Sat, 10 Jun 2017 00:00:00 GMT",
+    //                             "predict": 275644.78125
+    //                         },
+    //                         "2": {
+    //                             "actual": 41878.33,
+    //                             "date": "Sat, 17 Jun 2017 00:00:00 GMT",
+    //                             "predict": 46692.9609375
+    //                         }
+    //                         ,"3": {
+    //                             "actual": 41878.33,
+    //                             "date": "Sat, 24 Jun 2017 00:00:00 GMT",
+    //                             "predict": 46692.9609375
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         },
+    //         "Home": {
+    //             "multivariate": {
+    //                 "GRU": {
+    //                     "<CLOSE>": {
+    //                         "1": {
+    //                             "actual": 276632.5,
+    //                             "date": "Sat, 10 Jun 2017 00:00:00 GMT",
+    //                             "predict": 275644.78125
+    //                         },
+    //                         "2": {
+    //                             "actual": 41878.33,
+    //                             "date": "Sat, 17 Jun 2017 00:00:00 GMT",
+    //                             "predict": 46692.9609375
+    //                         }
+    //                         ,"3": {
+    //                             "actual": 41878.33,
+    //                             "date": "Sat, 24 Jun 2017 00:00:00 GMT",
+    //                             "predict": 46692.9609375
+    //                         }
+    //                     },
+    //                     "<HIGH>": {
+    //                         "1": {
+    //                             "actual": 276632.5,
+    //                             "date": "Sat, 10 Jun 2017 00:00:00 GMT",
+    //                             "predict": 275644.78125
+    //                         },
+    //                         "2": {
+    //                             "actual": 41878.33,
+    //                             "date": "Sat, 17 Jun 2017 00:00:00 GMT",
+    //                             "predict": 46692.9609375
+    //                         }
+    //                         ,"3": {
+    //                             "actual": 41878.33,
+    //                             "date": "Sat, 24 Jun 2017 00:00:00 GMT",
+    //                             "predict": 46692.9609375
+    //                         }
+    //                     }
+    //                 }
+    //             },
+    //             "univariate": null
+    //         },
+    //         "Oil": {
+    //             "multivariate": null,
+    //             "univariate": null
+    //         }
+    //     }
+    //     setPredicts(data)
+    //     nav('/predicts')
+    // }, []);
 
     const handleDateChange = (newValue) => {
         // console.log("newValue:", newValue);
@@ -57,7 +269,8 @@ function App() {
             const responseData = await response.json();
             console.log('Response from Flask API:', responseData);
             setLoading(false)
-            setPredicts(responseData.data)
+            const predictions = Object.entries(responseData.data)
+            setPredicts(predictions)
             toast.success('predictions received successfully')
             nav('/predicts')
         } catch (error) {
@@ -84,7 +297,7 @@ function App() {
                     <Route path={'/search'} element={<Search/>}/>
                     <Route path={'/prediction-props'} element={<PredictionPropsForm/>}/>
                     <Route path={'/load-datasets'} element={<StockChart/>}/>
-                    <Route path={'/predicts'} element={<ResultCharts2/>}/>
+                    <Route path={'/predicts'} element={<ResultCharts/>}/>
                 </Routes>
                 {/*<div className="App">*/}
                 {/*    <header className="w-60 h-60 flex items-center justify-center">*/}
