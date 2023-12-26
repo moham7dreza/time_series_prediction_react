@@ -1,8 +1,7 @@
 // StockChart.js
 
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef} from 'react';
 import Chart from 'chart.js/auto';
-import {toast} from "react-toastify";
 import {StockContext} from "../context/StockContext";
 
 const StockChart = () => {
@@ -57,7 +56,7 @@ const StockChart = () => {
                 {
                     label: `${title} ${datasetTitle} Stock Price`,
                     data: dataset[1].datasets[datasetTitle],
-                    borderColor: getRandomColor(),
+                    borderColor: !datasetTitle.toLowerCase().includes('actual') ? 'rgba(255, 0, 0, 1)' : getRandomColor(),
                     borderWidth: 2,
                     fill: false,
                 }
@@ -70,15 +69,46 @@ const StockChart = () => {
                     datasets: [...datasets],
                 },
                 options: {
-                    animation: false,
+                    animation: true,
+                    responsive: true,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
                     plugins: {
                         legend: {
-                            display: false
+                            display: true,
+                            position: 'top'
                         },
                         tooltip: {
-                            enabled: false
-                        }
-                    }
+                            enabled: true,
+                            mode: 'index'
+                        },
+                        datalabels:{
+                            display: true
+                        },
+                        title: {
+                            display: false,
+                            text: 'My Chart Title',
+                            // other options...
+                        },
+                    },
+                    // scales: {
+                    //     x: {
+                    //         display: true,
+                    //         title: {
+                    //             display: true,
+                    //             text: 'Month'
+                    //         }
+                    //     },
+                    //     y: {
+                    //         display: true,
+                    //         title: {
+                    //             display: true,
+                    //             text: 'Value'
+                    //         }
+                    //     }
+                    // }
                 },
             });
         });
@@ -98,8 +128,8 @@ const StockChart = () => {
                                 <a className="group relative block rounded-xl dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                                 >
                                     <div key={index}>
-                                        <span
-                                            className={'flex items-center justify-center'}>{`${dataset[0]} prices`}</span>
+                                        <h1
+                                            className={'flex items-center justify-center text-slate-500 mb-8 text-3xl font-bold'}>{`${dataset[0]} prices`}</h1>
                                         <canvas id={`stockChart-${index}`} width="400" height="200"></canvas>
                                     </div>
                                 </a>
