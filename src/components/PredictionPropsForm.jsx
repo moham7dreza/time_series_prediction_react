@@ -6,6 +6,7 @@ import {ErrorMessage, Field, Form, Formik} from "formik";
 import Datepicker from "react-tailwindcss-datepicker";
 import {Spinner} from "./Spinner";
 import * as YUP from "yup";
+import {Helmet} from "react-helmet";
 
 export const PredictionPropsForm = () => {
     const {
@@ -82,6 +83,9 @@ export const PredictionPropsForm = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Props</title>
+            </Helmet>
             {loading ? <Spinner/> : <div className="max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
                 <Formik
                     initialValues={initialValues}

@@ -1,6 +1,11 @@
+import {Helmet} from "react-helmet";
+
 export const Dashboard = () => {
     return (
         <>
+            <Helmet>
+                <title>Dashborad</title>
+            </Helmet>
             <body className="bg-gray-50 dark:bg-slate-900">
             {/* ========== HEADER ========== */}
             <header

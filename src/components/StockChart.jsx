@@ -3,6 +3,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import Chart from 'chart.js/auto';
 import {toast} from "react-toastify";
+import {Helmet} from "react-helmet";
 
 const StockChart = () => {
     const [stockData, setStockData] = useState([]);
@@ -105,6 +106,9 @@ const StockChart = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Datasets</title>
+            </Helmet>
             {
                 stockData.map((dataset, index) => (
                     <section>

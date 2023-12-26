@@ -3,6 +3,7 @@
 import React, {useContext, useEffect, useRef} from 'react';
 import Chart from 'chart.js/auto';
 import {StockContext} from "../context/StockContext";
+import {Helmet} from "react-helmet";
 
 const StockChart = () => {
     const {setLoading, loading, predicts, datasets, series, models, prices} = useContext(StockContext)
@@ -116,6 +117,9 @@ const StockChart = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Results</title>
+            </Helmet>
             {
                 predicts.map((dataset, index) => (
                     <section>
