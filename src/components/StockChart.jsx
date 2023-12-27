@@ -90,15 +90,46 @@ const StockChart = () => {
                 //     },
                 // },
                 options: {
-                    animation: false,
+                    animation: true,
+                    responsive: true,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
                     plugins: {
                         legend: {
-                            display: false
+                            display: true,
+                            position: 'top'
                         },
                         tooltip: {
-                            enabled: false
-                        }
-                    }
+                            enabled: true,
+                            mode: 'index'
+                        },
+                        datalabels:{
+                            display: true
+                        },
+                        title: {
+                            display: false,
+                            text: 'My Chart Title',
+                            // other options...
+                        },
+                    },
+                    // scales: {
+                    //     x: {
+                    //         display: true,
+                    //         title: {
+                    //             display: true,
+                    //             text: 'Month'
+                    //         }
+                    //     },
+                    //     y: {
+                    //         display: true,
+                    //         title: {
+                    //             display: true,
+                    //             text: 'Value'
+                    //         }
+                    //     }
+                    // }
                 },
             });
         });
