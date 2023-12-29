@@ -35,6 +35,16 @@ const StockChart = () => {
         return color;
     };
 
+    const createChartDataset = (title, data, labelSuffix = '') => {
+        return {
+            label: `${title} ${labelSuffix}`,
+            data: data,
+            borderColor: getRandomColor(),
+            borderWidth: 2,
+            fill: false,
+        };
+    }
+
     const renderCharts = () => {
         // Clear existing charts
         chartRefs.current.forEach((chart) => {
@@ -45,7 +55,7 @@ const StockChart = () => {
 
         // Render new charts
         chartRefs.current = predicts.map((dataset, index) => {
-            console.log()
+
             const ctx = document.getElementById(`stockChart-${index}`).getContext('2d');
             const title = dataset[0]
             const labels = dataset[1].labels.map((date) => {
@@ -54,20 +64,15 @@ const StockChart = () => {
                 return new Date(date).toISOString().split('T')[0];
             })
             const datasets = Object.keys(dataset[1].datasets).map(datasetTitle => (
-                {
-                    label: `${title} ${datasetTitle} Stock Price`,
-                    data: dataset[1].datasets[datasetTitle],
-                    borderColor: getRandomColor(),
-                    borderWidth: 2,
-                    fill: false,
-                }
+                createChartDataset(datasetTitle, dataset[1].datasets[datasetTitle], 'Price')
             ))
+            const actuals = [createChartDataset('Actual Price', dataset[1].actuals)];
 
             return new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: labels,
-                    datasets: [...datasets],
+                    datasets: [...datasets, ...actuals],
                 },
                 options: {
                     animation: true,
