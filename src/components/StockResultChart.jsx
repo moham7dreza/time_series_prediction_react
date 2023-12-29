@@ -57,7 +57,7 @@ const StockChart = () => {
                 {
                     label: `${title} ${datasetTitle} Stock Price`,
                     data: dataset[1].datasets[datasetTitle],
-                    borderColor: !datasetTitle.toLowerCase().includes('actual') ? 'rgba(255, 0, 0, 1)' : getRandomColor(),
+                    borderColor: getRandomColor(),
                     borderWidth: 2,
                     fill: false,
                 }
