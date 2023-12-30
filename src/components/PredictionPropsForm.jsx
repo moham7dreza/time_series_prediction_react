@@ -89,7 +89,7 @@ export const PredictionPropsForm = () => {
             {loading ? <Spinner/> : <div className="max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
                 <Formik
                     initialValues={initialValues}
-                    onSubmit={submitPredictions} validationSchema={PredictValidation}>
+                    onSubmit={values => submitPredictions(values)} validationSchema={PredictValidation}>
                     <Form>
                         <div className="space-y-12">
                             <div className="border-b border-gray-900/10 pb-12">
@@ -110,7 +110,7 @@ export const PredictionPropsForm = () => {
                                                 {series.map((serie, index) => (
                                                     <div className="relative flex gap-x-3" key={index}>
                                                         <div className="flex h-6 items-center">
-                                                            <Field name={`serie-${serie}`} type="checkbox"
+                                                            <Field name={`serie-${serie}`} id={`serie-${serie}`} type="checkbox"
                                                                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
                                                         </div>
                                                         <div className="text-sm leading-6">
@@ -142,7 +142,7 @@ export const PredictionPropsForm = () => {
                                                 {datasets.map((dataset, index) => (
                                                     <div className="relative flex gap-x-3" key={index}>
                                                         <div className="flex h-6 items-center">
-                                                            <Field name={`dataset-${dataset}`} type="checkbox"
+                                                            <Field name={`dataset-${dataset}`} id={`dataset-${dataset}`} type="checkbox"
                                                                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
                                                         </div>
                                                         <div className="text-sm leading-6">
@@ -174,7 +174,7 @@ export const PredictionPropsForm = () => {
                                                 {prices.map((price, index) => (
                                                     <div className="relative flex gap-x-3" key={index}>
                                                         <div className="flex h-6 items-center">
-                                                            <Field name={`price-${price}`} type="checkbox"
+                                                            <Field name={`price-${price}`} id={`price-${price}`} type="checkbox"
                                                                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
                                                         </div>
                                                         <div className="text-sm leading-6">
@@ -206,7 +206,7 @@ export const PredictionPropsForm = () => {
                                                 {models.map((model, index) => (
                                                     <div className="relative flex gap-x-3" key={index}>
                                                         <div className="flex h-6 items-center">
-                                                            <Field name={`model-${model}`} type="checkbox"
+                                                            <Field name={`model-${model}`} id={`model-${model}`} type="checkbox"
                                                                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
                                                         </div>
                                                         <div className="text-sm leading-6">
