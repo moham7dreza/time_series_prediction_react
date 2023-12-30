@@ -1,37 +1,15 @@
 // StockChart.js
 
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import Chart from 'chart.js/auto';
 import {toast} from "react-toastify";
 import {Helmet} from "react-helmet";
+import {StockContext} from "../context/StockContext";
 
 const StockChart = () => {
-    const [stockData, setStockData] = useState([]);
-    const chartRefs = useRef(null);
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                // Replace 'YOUR_API_KEY' and 'YOUR_STOCK_SYMBOL' with actual values
-                // const apiKey = 'YOUR_API_KEY';
-                // const stockSymbol = 'YOUR_STOCK_SYMBOL';
-                // const apiUrl = `https://financialmodelingprep.com/api/v3/historical-price-full/${stockSymbol}?apikey=${apiKey}`;
-                const apiUrl = 'http://127.0.0.1:5000/datasets'
-                const response = await fetch(apiUrl);
-                const result = await response.json();
-                if (result.status === 'OK') {
-                    toast.success('Data loaded successfully')
-                    const data = Object.entries(result.data)
-                    // console.log(data.map(data => console.log(data[0])));
-                    // Assuming the API response has a structure like { historical: [] }
-                    setStockData(data);
-                }
-            } catch (error) {
-                console.error('Error fetching stock data:', error);
-            }
-        };
+    const {stockData} = useContext(StockContext)
 
-        fetchData();
-    }, []);
+    const chartRefs = useRef(null);
 
     useEffect(() => {
         // Initialize chartRefs.current as an empty array
@@ -49,6 +27,25 @@ const StockChart = () => {
         };
     }, [stockData]);
 
+    const getRandomColor = () => {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    };
+
+    const createChartDataset = (title, data, labelSuffix = '') => {
+        return {
+            label: `${title} ${labelSuffix}`,
+            data: data,
+            borderColor: getRandomColor(),
+            borderWidth: 2,
+            fill: false,
+        };
+    }
+
     const renderCharts = () => {
         // Clear existing charts
         chartRefs.current.forEach((chart) => {
@@ -62,33 +59,20 @@ const StockChart = () => {
             // console.log(Object.values(dataset[1]))
             const ctx = document.getElementById(`stockChart-${index}`).getContext('2d');
             const title = dataset[0]
-            const data = Object.values(dataset[1])
+            const labels = dataset[1].labels.map((date) => {
+                // console.log(data)
+                // Format the date to show only the date without the time
+                return new Date(date).toISOString().split('T')[0];
+            })
+            const datasets = Object.keys(dataset[1].datasets).map(datasetTitle => (
+                createChartDataset(datasetTitle, dataset[1].datasets[datasetTitle], 'Price')
+            ))
             return new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: data.map((data) => {
-                        // console.log(data)
-                        // Format the date to show only the date without the time
-                        return new Date(data.date).toISOString().split('T')[0];
-                    }),
-                    datasets: [
-                        {
-                            label: `${title} Stock Price`,
-                            data: data.map((data) => data.close),
-                            borderColor: 'rgba(75, 192, 192, 1)',
-                            borderWidth: 2,
-                            fill: false,
-                        },
-                    ],
+                    labels: labels,
+                    datasets: [...datasets]
                 },
-                // options: {
-                //     scales: {
-                //         x: {
-                //             type: 'linear',
-                //             position: 'bottom',
-                //         },
-                //     },
-                // },
                 options: {
                     animation: true,
                     responsive: true,
@@ -114,22 +98,6 @@ const StockChart = () => {
                             // other options...
                         },
                     },
-                    // scales: {
-                    //     x: {
-                    //         display: true,
-                    //         title: {
-                    //             display: true,
-                    //             text: 'Month'
-                    //         }
-                    //     },
-                    //     y: {
-                    //         display: true,
-                    //         title: {
-                    //             display: true,
-                    //             text: 'Value'
-                    //         }
-                    //     }
-                    // }
                 },
             });
         });

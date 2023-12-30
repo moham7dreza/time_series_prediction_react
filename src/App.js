@@ -14,6 +14,7 @@ import {transformObject} from "./helpers/Transformers";
 import ResultCharts from "./components/ResultCharts";
 import ResultCharts2 from "./components/ResultCharts2";
 import StockResultChart from "./components/StockResultChart";
+import {DatasetPropsForm} from "./components/DatasetPropsForm";
 
 function App() {
     const [predicts, setPredicts] = useState({})
@@ -22,6 +23,7 @@ function App() {
     const [datasets, setDatasets] = useState([])
     const [series, setSeries] = useState([])
     const [prices, setPrices] = useState([])
+    const [stockData, setStockData] = useState([]);
 
     const nav = useNavigate()
 
@@ -35,7 +37,7 @@ function App() {
         setDate(newValue);
     }
 
-    const submit = async (values) => {
+    const submitPredictions = async (values) => {
         setLoading(true)
         const data = transformObject({...values, ...date})
         // console.log(data)
@@ -67,9 +69,41 @@ function App() {
             console.error('Error sending data to Flask API:', error);
         }
     }
+    const submitDatasets = async (values) => {
+        setLoading(true)
+        const data = transformObject({...values, ...date})
+        // console.log(data)
+        const apiUrl = 'http://127.0.0.1:5000/datasets';
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Add other headers if needed
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (!response.ok) {
+                setLoading(false)
+                throw new Error('Network response was not ok');
+            }
+
+            const responseData = await response.json();
+            // console.log('Response from Flask API:', responseData);
+            setLoading(false)
+            const datasets = Object.entries(responseData.data)
+            setStockData(datasets)
+            toast.success('datasets received successfully')
+            nav('/load-datasets')
+        } catch (error) {
+            setLoading(false)
+            console.error('Error sending data to Flask API:', error);
+        }
+    }
     const context = {
-        predicts, submit, date, handleDateChange, loading, setLoading, models,
-        setModels,
+        predicts, submitPredictions, date, handleDateChange, loading, setLoading, models,
+        setModels, submitDatasets, stockData,
         datasets,
         setDatasets,
         series,
@@ -85,6 +119,7 @@ function App() {
                     <Route path={'/dashboard'} element={<Dashboard/>}/>
                     <Route path={'/search'} element={<Search/>}/>
                     <Route path={'/prediction-props'} element={<PredictionPropsForm/>}/>
+                    <Route path={'/dataset-props'} element={<DatasetPropsForm/>}/>
                     <Route path={'/load-datasets'} element={<StockChart/>}/>
                     <Route path={'/predicts'} element={<StockResultChart/>}/>
                 </Routes>
