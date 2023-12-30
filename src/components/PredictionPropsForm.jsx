@@ -10,7 +10,7 @@ import {Helmet} from "react-helmet";
 
 export const PredictionPropsForm = () => {
     const {
-        submit, date, handleDateChange, loading, models, setModels, datasets, setDatasets, series, setSeries, prices, setPrices
+        submitPredictions, date, handleDateChange, loading, models, setModels, datasets, setDatasets, series, setSeries, prices, setPrices
     } = useContext(StockContext)
 
     const [datasetNames] = useFetch('http://127.0.0.1:5000/datasets-name')
@@ -89,7 +89,7 @@ export const PredictionPropsForm = () => {
             {loading ? <Spinner/> : <div className="max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
                 <Formik
                     initialValues={initialValues}
-                    onSubmit={submit} validationSchema={PredictValidation}>
+                    onSubmit={submitPredictions} validationSchema={PredictValidation}>
                     <Form>
                         <div className="space-y-12">
                             <div className="border-b border-gray-900/10 pb-12">
