@@ -26,6 +26,7 @@ function App() {
     const [stockData, setStockData] = useState([]);
     const [lastPredProps, setLastPredProps] = useState([]);
     const [metrics, setMetrics] = useState([]);
+    const [metricsData, setMetricsData] = useState([]);
 
     const nav = useNavigate()
 
@@ -60,11 +61,18 @@ function App() {
             }
 
             const responseData = await response.json();
+
             // console.log('Response from Flask API:', responseData);
             setLoading(false)
+
             const predictions = Object.entries(responseData.data)
             setPredicts(predictions)
-            toast.success('predictions received successfully')
+            toast.success('Predictions Received Successfully')
+
+            const metrics = Object.entries(responseData.metrics)
+            setMetricsData(metrics)
+            toast.info('Metrics Received Successfully')
+
             nav('/predicts')
         } catch (error) {
             setLoading(false)
@@ -106,7 +114,7 @@ function App() {
     const context = {
         predicts, submitPredictions, date, handleDateChange, loading, setLoading, models,
         setModels, submitDatasets, stockData, lastPredProps, setLastPredProps,
-        datasets, metrics, setMetrics,
+        datasets, metrics, setMetrics, metricsData,
         setDatasets,
         series,
         setSeries, prices, setPrices
