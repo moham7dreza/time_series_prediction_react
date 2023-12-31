@@ -23,13 +23,14 @@ export const PredictionPropsForm = () => {
         prices,
         setPrices,
         lastPredProps,
-        setLastPredProps
+        setLastPredProps, metrics, setMetrics,
     } = useContext(StockContext)
 
     const [datasetNames] = useFetch('http://127.0.0.1:5000/datasets-name')
     const [modelsNames] = useFetch('http://127.0.0.1:5000/models-name')
     const [seriesNames] = useFetch('http://127.0.0.1:5000/series-name')
     const [pricesNames] = useFetch('http://127.0.0.1:5000/prices-name')
+    const [metricsNames] = useFetch('http://127.0.0.1:5000/metrics-name')
     const [lastPredictionProps] = useFetch('http://127.0.0.1:5000/last-predict-props')
 
     useEffect(() => {
@@ -49,11 +50,15 @@ export const PredictionPropsForm = () => {
             // toast.info('series names fetched')
             setPrices(pricesNames.data)
         }
+        if (metricsNames && metricsNames.status === 'OK') {
+            // toast.info('series names fetched')
+            setMetrics(metricsNames.data)
+        }
         if (lastPredictionProps && lastPredictionProps.status === 'OK') {
             // toast.info('series names fetched')
             setLastPredProps(lastPredictionProps.data)
         }
-    }, [datasetNames, modelsNames, seriesNames, pricesNames, lastPredictionProps])
+    }, [datasetNames, modelsNames, seriesNames, pricesNames, lastPredictionProps, metricsNames])
 
     const PredictValidation = YUP.object().shape({
         n_steps: YUP.number().required('Number of Time Steps is required'),
@@ -96,8 +101,12 @@ export const PredictionPropsForm = () => {
             acc[`price-${price}`] = false;
             return acc;
         }, {}),
+        ...metrics.reduce((acc, metric) => {
+            acc[`metric-${metric}`] = false;
+            return acc;
+        }, {}),
     };
-    console.log(lastPredProps)
+    // console.log(lastPredProps)
 
     return (
         <>
@@ -239,6 +248,64 @@ export const PredictionPropsForm = () => {
                                                             {/*    on a*/}
                                                             {/*    posting.</p>*/}
                                                             <ErrorMessage name={`model-${model}`}>
+                                                                {message => (<div
+                                                                    className={'text-red-500 my-2'}>{message}</div>)}
+                                                            </ErrorMessage>
+                                                        </div>
+                                                    </div>
+                                                ))}
+
+
+                                            </div>
+                                        </fieldset>
+                                        {/*<fieldset>*/}
+                                        {/*    <legend className="text-sm font-semibold leading-6 text-gray-900">Push Notifications*/}
+                                        {/*    </legend>*/}
+                                        {/*    <p className="mt-1 text-sm leading-6 text-gray-600">These are delivered via SMS to*/}
+                                        {/*        your*/}
+                                        {/*        mobile phone.</p>*/}
+                                        {/*    <div className="mt-6 space-y-6">*/}
+                                        {/*        <div className="flex items-center gap-x-3">*/}
+                                        {/*            <input id="push-everything" name="push-notifications" type="radio"*/}
+                                        {/*                   className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"/>*/}
+                                        {/*            <label htmlFor="push-everything"*/}
+                                        {/*                   className="block text-sm font-medium leading-6 text-gray-900">Everything</label>*/}
+                                        {/*        </div>*/}
+                                        {/*        <div className="flex items-center gap-x-3">*/}
+                                        {/*            <input id="push-email" name="push-notifications" type="radio"*/}
+                                        {/*                   className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"/>*/}
+                                        {/*            <label htmlFor="push-email"*/}
+                                        {/*                   className="block text-sm font-medium leading-6 text-gray-900">Same as*/}
+                                        {/*                email</label>*/}
+                                        {/*        </div>*/}
+                                        {/*        <div className="flex items-center gap-x-3">*/}
+                                        {/*            <input id="push-nothing" name="push-notifications" type="radio"*/}
+                                        {/*                   className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"/>*/}
+                                        {/*            <label htmlFor="push-nothing"*/}
+                                        {/*                   className="block text-sm font-medium leading-6 text-gray-900">No push*/}
+                                        {/*                notifications</label>*/}
+                                        {/*        </div>*/}
+                                        {/*    </div>*/}
+                                        {/*</fieldset>*/}
+                                    </div>
+                                    <div className={'mt-10 space-y-10'}>
+                                        <fieldset className={'mt-0'}>
+                                            <legend className="text-sm font-semibold leading-6 text-gray-900">Choice
+                                                Metrics
+                                                ...
+                                            </legend>
+                                            <div className="mt-6 space-y-6">
+                                                {metrics.map((metric, index) => (
+                                                    <div className="relative flex gap-x-3" key={index}>
+                                                        <div className="flex h-6 items-center">
+                                                            <Field name={`metric-${metric}`} id={`metric-${metric}`}
+                                                                   type="checkbox"
+                                                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
+                                                        </div>
+                                                        <div className="text-sm leading-6">
+                                                            <label htmlFor={`metric-${metric}`}
+                                                                   className="font-medium text-gray-900">{metric}</label>
+                                                            <ErrorMessage name={`metric-${metric}`}>
                                                                 {message => (<div
                                                                     className={'text-red-500 my-2'}>{message}</div>)}
                                                             </ErrorMessage>

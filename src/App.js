@@ -25,6 +25,7 @@ function App() {
     const [prices, setPrices] = useState([])
     const [stockData, setStockData] = useState([]);
     const [lastPredProps, setLastPredProps] = useState([]);
+    const [metrics, setMetrics] = useState([]);
 
     const nav = useNavigate()
 
@@ -105,7 +106,7 @@ function App() {
     const context = {
         predicts, submitPredictions, date, handleDateChange, loading, setLoading, models,
         setModels, submitDatasets, stockData, lastPredProps, setLastPredProps,
-        datasets,
+        datasets, metrics, setMetrics,
         setDatasets,
         series,
         setSeries, prices, setPrices
