@@ -4,12 +4,13 @@ import React, {useContext, useEffect, useRef} from 'react';
 import Chart from 'chart.js/auto';
 import {StockContext} from "../context/StockContext";
 import {Helmet} from "react-helmet";
+import {toast} from "react-toastify";
 
 const StockChart = () => {
     const {setLoading, loading, predicts, datasets, series, models, prices, metricsData} = useContext(StockContext)
     const chartRefs = useRef(null);
     const metricsChartRefs = useRef(null);
-
+    const metricChartRef = useRef(null);
 
     useEffect(() => {
         // Initialize chartRefs.current as an empty array
@@ -202,6 +203,16 @@ const StockChart = () => {
         });
     };
 
+    const handleShowMetrics = (index) => {
+        const parent = document.getElementById(`metricsChart-${index}`).parentElement
+        parent.classList.toggle('hidden')
+        if (parent.classList.contains('hidden')) {
+            toast.error('Metrics goes hidden')
+        } else {
+            toast.success('Metrics is now visible')
+        }
+    }
+
     return (
         <div>
             <Helmet>
@@ -209,7 +220,7 @@ const StockChart = () => {
             </Helmet>
             {
                 predicts.map((dataset, index) => (
-                    <section>
+                    <section key={index + 10}>
                         {/* Card Blog */
                         }
                         <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
@@ -218,9 +229,16 @@ const StockChart = () => {
                                 {/* Card */}
                                 <a className="group relative block rounded-xl dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                                 >
-                                    <div key={index}>
-                                        <h1
-                                            className={'flex items-center justify-center text-slate-500 mb-8 text-3xl font-bold'}>{`${dataset[0]} Prices`}</h1>
+                                    <div>
+                                        <div className={'flex items-center justify-center mb-8'}>
+                                            {/*<button type="button" onClick={() => handleShowMetrics(index)}*/}
+                                            {/*        className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-red-100 text-red-800 hover:bg-red-200 disabled:opacity-50 disabled:pointer-events-none dark:hover:bg-red-900 dark:text-red-500 dark:hover:text-red-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">*/}
+                                            {/*    Show Metrics ...*/}
+                                            {/*</button>*/}
+                                            <h1
+                                                className={'text-slate-500 text-3xl font-bold w-5/6 text-center'}>{`${dataset[0]} Prices`}</h1>
+
+                                        </div>
                                         <canvas id={`stockChart-${index}`} width="400" height="200"></canvas>
                                     </div>
                                 </a>
@@ -244,7 +262,7 @@ const StockChart = () => {
                                 {/* Card */}
                                 <a className="group relative block rounded-xl dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                                 >
-                                    <div key={index}>
+                                    <div key={index} ref={metricChartRef}>
                                         <h1
                                             className={'flex items-center justify-center text-slate-500 mb-8 text-3xl font-bold'}>{`${dataset[0]} Metrics`}</h1>
                                         <canvas id={`metricsChart-${index}`} width="400" height="200"></canvas>

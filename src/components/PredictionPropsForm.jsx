@@ -84,7 +84,7 @@ export const PredictionPropsForm = () => {
     // });
 
     const initialValues = {
-        n_steps: '',
+        n_steps: 3,
         ...series.reduce((acc, serie) => {
             acc[`serie-${serie}`] = false;
             return acc;
