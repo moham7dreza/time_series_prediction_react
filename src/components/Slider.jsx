@@ -2,7 +2,7 @@ export const Slider = () => {
     return (
         <>
             {/*<!-- Card Blog */}
-            <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto bg-slate-500 rounded-2xl shadow-2xl mt-5">
+            <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto rounded-2xl shadow-2xl mt-5">
                 {/*<!-- Title */}
                 <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
                     <h2 className="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">Training Models</h2>
@@ -19,7 +19,7 @@ export const Slider = () => {
                        href="#">
                         <div className="aspect-w-16 aspect-h-10">
                             <img className="w-full object-cover rounded-xl"
-                                 src="https://images.unsplash.com/photo-1657299171054-e679f630a776?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                                 src="https://dataconomy.com/wp-content/uploads/2023/02/deep-learning-models.jpg"
                                  alt="Image Description"/>
                         </div>
                         <h3 className="mt-5 text-xl text-gray-800 dark:text-gray-300 dark:hover:text-white">
@@ -41,11 +41,11 @@ export const Slider = () => {
                        href="#">
                         <div className="aspect-w-16 aspect-h-10">
                             <img className="w-full object-cover rounded-xl"
-                                 src="https://images.unsplash.com/photo-1657299171054-e679f630a776?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                                 src="https://imageio.forbes.com/specials-images/imageserve/64d24936a0c9451a52034c63/Training-machine-learning-model-concept/960x0.jpg?format=jpg&width=960"
                                  alt="Image Description"/>
                         </div>
                         <h3 className="mt-5 text-xl text-gray-800 dark:text-gray-300 dark:hover:text-white">
-                            Atlassian powers sales and support at scale with Preline.
+                            CNN
                         </h3>
                         <p className="mt-3 inline-flex items-center gap-x-1 text-sm font-semibold text-gray-800 dark:text-gray-200">
                             Learn more
@@ -63,11 +63,11 @@ export const Slider = () => {
                        href="#">
                         <div className="aspect-w-16 aspect-h-10">
                             <img className="w-full object-cover rounded-xl"
-                                 src="https://images.unsplash.com/photo-1657299171054-e679f630a776?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                                 src="https://fordhamobserver.com/wp-content/uploads/2020/03/Artificial_Intelligence.png"
                                  alt="Image Description"/>
                         </div>
                         <h3 className="mt-5 text-xl text-gray-800 dark:text-gray-300 dark:hover:text-white">
-                            Atlassian powers sales and support at scale with Preline.
+                            GRU
                         </h3>
                         <p className="mt-3 inline-flex items-center gap-x-1 text-sm font-semibold text-gray-800 dark:text-gray-200">
                             Learn more

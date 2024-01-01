@@ -120,7 +120,7 @@ export const PredictionPropsForm = () => {
                     <Form>
                         <div className="space-y-12">
                             <div className="border-b border-gray-900/10 pb-12">
-                                <h2 className="text-base font-semibold leading-7 text-gray-900">Prediction
+                                <h2 className="text-base font-semibold leading-7 text-gray-800 dark:text-gray-300 dark:hover:text-white">Prediction
                                     Properties</h2>
                                 {/*<p className="mt-1 text-sm leading-6 text-gray-600">We'll always let you know about*/}
                                 {/*    important*/}
@@ -129,7 +129,7 @@ export const PredictionPropsForm = () => {
                                 <section className="flex space-x-20 space-y-12">
                                     <div className="mt-10 space-y-10">
                                         <fieldset>
-                                            <legend className="text-sm font-semibold leading-6 text-gray-900">Choice
+                                            <legend className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Choice
                                                 Series
                                                 ...
                                             </legend>
@@ -143,7 +143,7 @@ export const PredictionPropsForm = () => {
                                                         </div>
                                                         <div className="text-sm leading-6">
                                                             <label htmlFor={`serie-${serie}`}
-                                                                   className="font-medium text-gray-900">{serie}</label>
+                                                                   className="font-medium text-gray-800 dark:text-gray-300 dark:hover:text-white">{serie}</label>
                                                             {/*<p className="text-gray-500">Get notified when someones posts a*/}
                                                             {/*    comment*/}
                                                             {/*    on a*/}
@@ -162,7 +162,7 @@ export const PredictionPropsForm = () => {
                                     </div>
                                     <div className="mt-10 space-y-10">
                                         <fieldset>
-                                            <legend className="text-sm font-semibold leading-6 text-gray-900">Choice
+                                            <legend className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Choice
                                                 Datasets
                                                 ...
                                             </legend>
@@ -176,7 +176,7 @@ export const PredictionPropsForm = () => {
                                                         </div>
                                                         <div className="text-sm leading-6">
                                                             <label htmlFor={`dataset-${dataset}`}
-                                                                   className="font-medium text-gray-900">{dataset}</label>
+                                                                   className="font-medium text-gray-800 dark:text-gray-300 dark:hover:text-white">{dataset}</label>
                                                             {/*<p className="text-gray-500">Get notified when someones posts a*/}
                                                             {/*    comment*/}
                                                             {/*    on a*/}
@@ -195,7 +195,7 @@ export const PredictionPropsForm = () => {
                                     </div>
                                     <div className="mt-10 space-y-10">
                                         <fieldset>
-                                            <legend className="text-sm font-semibold leading-6 text-gray-900">Choice
+                                            <legend className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Choice
                                                 Prices
                                                 ...
                                             </legend>
@@ -209,7 +209,7 @@ export const PredictionPropsForm = () => {
                                                         </div>
                                                         <div className="text-sm leading-6">
                                                             <label htmlFor={`price-${price}`}
-                                                                   className="font-medium text-gray-900">{price}</label>
+                                                                   className="font-medium text-gray-800 dark:text-gray-300 dark:hover:text-white">{price}</label>
                                                             {/*<p className="text-gray-500">Get notified when someones posts a*/}
                                                             {/*    comment*/}
                                                             {/*    on a*/}
@@ -228,7 +228,7 @@ export const PredictionPropsForm = () => {
                                     </div>
                                     <div className={'mt-10 space-y-10'}>
                                         <fieldset className={'mt-0'}>
-                                            <legend className="text-sm font-semibold leading-6 text-gray-900">Choice
+                                            <legend className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Choice
                                                 Models
                                                 ...
                                             </legend>
@@ -242,7 +242,7 @@ export const PredictionPropsForm = () => {
                                                         </div>
                                                         <div className="text-sm leading-6">
                                                             <label htmlFor={`model-${model}`}
-                                                                   className="font-medium text-gray-900">{model}</label>
+                                                                   className="font-medium text-gray-800 dark:text-gray-300 dark:hover:text-white">{model}</label>
                                                             {/*<p className="text-gray-500">Get notified when someones posts a*/}
                                                             {/*    comment*/}
                                                             {/*    on a*/}
@@ -259,7 +259,7 @@ export const PredictionPropsForm = () => {
                                             </div>
                                         </fieldset>
                                         {/*<fieldset>*/}
-                                        {/*    <legend className="text-sm font-semibold leading-6 text-gray-900">Push Notifications*/}
+                                        {/*    <legend className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Push Notifications*/}
                                         {/*    </legend>*/}
                                         {/*    <p className="mt-1 text-sm leading-6 text-gray-600">These are delivered via SMS to*/}
                                         {/*        your*/}
@@ -269,20 +269,20 @@ export const PredictionPropsForm = () => {
                                         {/*            <input id="push-everything" name="push-notifications" type="radio"*/}
                                         {/*                   className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"/>*/}
                                         {/*            <label htmlFor="push-everything"*/}
-                                        {/*                   className="block text-sm font-medium leading-6 text-gray-900">Everything</label>*/}
+                                        {/*                   className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Everything</label>*/}
                                         {/*        </div>*/}
                                         {/*        <div className="flex items-center gap-x-3">*/}
                                         {/*            <input id="push-email" name="push-notifications" type="radio"*/}
                                         {/*                   className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"/>*/}
                                         {/*            <label htmlFor="push-email"*/}
-                                        {/*                   className="block text-sm font-medium leading-6 text-gray-900">Same as*/}
+                                        {/*                   className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Same as*/}
                                         {/*                email</label>*/}
                                         {/*        </div>*/}
                                         {/*        <div className="flex items-center gap-x-3">*/}
                                         {/*            <input id="push-nothing" name="push-notifications" type="radio"*/}
                                         {/*                   className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"/>*/}
                                         {/*            <label htmlFor="push-nothing"*/}
-                                        {/*                   className="block text-sm font-medium leading-6 text-gray-900">No push*/}
+                                        {/*                   className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">No push*/}
                                         {/*                notifications</label>*/}
                                         {/*        </div>*/}
                                         {/*    </div>*/}
@@ -290,7 +290,7 @@ export const PredictionPropsForm = () => {
                                     </div>
                                     <div className={'mt-10 space-y-10'}>
                                         <fieldset className={'mt-0'}>
-                                            <legend className="text-sm font-semibold leading-6 text-gray-900">Choice
+                                            <legend className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Choice
                                                 Metrics
                                                 ...
                                             </legend>
@@ -304,7 +304,7 @@ export const PredictionPropsForm = () => {
                                                         </div>
                                                         <div className="text-sm leading-6">
                                                             <label htmlFor={`metric-${metric}`}
-                                                                   className="font-medium text-gray-900">{metric}</label>
+                                                                   className="font-medium text-gray-800 dark:text-gray-300 dark:hover:text-white">{metric}</label>
                                                             <ErrorMessage name={`metric-${metric}`}>
                                                                 {message => (<div
                                                                     className={'text-red-500 my-2'}>{message}</div>)}
@@ -317,7 +317,7 @@ export const PredictionPropsForm = () => {
                                             </div>
                                         </fieldset>
                                         {/*<fieldset>*/}
-                                        {/*    <legend className="text-sm font-semibold leading-6 text-gray-900">Push Notifications*/}
+                                        {/*    <legend className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Push Notifications*/}
                                         {/*    </legend>*/}
                                         {/*    <p className="mt-1 text-sm leading-6 text-gray-600">These are delivered via SMS to*/}
                                         {/*        your*/}
@@ -327,38 +327,38 @@ export const PredictionPropsForm = () => {
                                         {/*            <input id="push-everything" name="push-notifications" type="radio"*/}
                                         {/*                   className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"/>*/}
                                         {/*            <label htmlFor="push-everything"*/}
-                                        {/*                   className="block text-sm font-medium leading-6 text-gray-900">Everything</label>*/}
+                                        {/*                   className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Everything</label>*/}
                                         {/*        </div>*/}
                                         {/*        <div className="flex items-center gap-x-3">*/}
                                         {/*            <input id="push-email" name="push-notifications" type="radio"*/}
                                         {/*                   className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"/>*/}
                                         {/*            <label htmlFor="push-email"*/}
-                                        {/*                   className="block text-sm font-medium leading-6 text-gray-900">Same as*/}
+                                        {/*                   className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Same as*/}
                                         {/*                email</label>*/}
                                         {/*        </div>*/}
                                         {/*        <div className="flex items-center gap-x-3">*/}
                                         {/*            <input id="push-nothing" name="push-notifications" type="radio"*/}
                                         {/*                   className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"/>*/}
                                         {/*            <label htmlFor="push-nothing"*/}
-                                        {/*                   className="block text-sm font-medium leading-6 text-gray-900">No push*/}
+                                        {/*                   className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">No push*/}
                                         {/*                notifications</label>*/}
                                         {/*        </div>*/}
                                         {/*    </div>*/}
                                         {/*</fieldset>*/}
                                     </div>
                                     <div className="mt-10 border-b border-gray-900/10 pb-12">
-                                        <legend className="text-sm font-semibold leading-6 text-gray-900">Enter props
+                                        <legend className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Enter props
                                             ...
                                         </legend>
                                         <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                                             <div className="sm:col-span-4">
                                                 <label htmlFor="n_steps"
-                                                       className="block text-sm font-medium leading-6 text-gray-900">Number
+                                                       className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Number
                                                     of Time Steps</label>
                                                 <div className="mt-2">
                                                     <Field type="text" name="n_steps"
                                                            autoComplete="3"
-                                                           className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+                                                           className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
                                                 </div>
                                                 <ErrorMessage name={'n_steps'}>
                                                     {message => (<div className={'text-red-500 my-2'}>{message}</div>)}
@@ -372,31 +372,31 @@ export const PredictionPropsForm = () => {
                                             </div>
                                             {/*<div className="sm:col-span-3">*/}
                                             {/*    <label htmlFor="last-name"*/}
-                                            {/*           className="block text-sm font-medium leading-6 text-gray-900">Last*/}
+                                            {/*           className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Last*/}
                                             {/*        name</label>*/}
                                             {/*    <div className="mt-2">*/}
                                             {/*        <input type="text" name="last-name" id="last-name"*/}
                                             {/*               autoComplete="family-name"*/}
-                                            {/*               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>*/}
+                                            {/*               className="block w-full rounded-md border-0 py-1.5 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>*/}
                                             {/*    </div>*/}
                                             {/*</div>*/}
 
                                             {/*<div className="sm:col-span-4">*/}
                                             {/*    <label htmlFor="email"*/}
-                                            {/*           className="block text-sm font-medium leading-6 text-gray-900">Email*/}
+                                            {/*           className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Email*/}
                                             {/*        address</label>*/}
                                             {/*    <div className="mt-2">*/}
                                             {/*        <input id="email" name="email" type="email" autoComplete="email"*/}
-                                            {/*               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>*/}
+                                            {/*               className="block w-full rounded-md border-0 py-1.5 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>*/}
                                             {/*    </div>*/}
                                             {/*</div>*/}
 
                                             {/*<div className="sm:col-span-3">*/}
                                             {/*    <label htmlFor="country"*/}
-                                            {/*           className="block text-sm font-medium leading-6 text-gray-900">Country</label>*/}
+                                            {/*           className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Country</label>*/}
                                             {/*    <div className="mt-2">*/}
                                             {/*        <select id="country" name="country" autoComplete="country-name"*/}
-                                            {/*                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">*/}
+                                            {/*                className="block w-full rounded-md border-0 py-1.5 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">*/}
                                             {/*            <option>United States</option>*/}
                                             {/*            <option>Canada</option>*/}
                                             {/*            <option>Mexico</option>*/}
@@ -406,44 +406,44 @@ export const PredictionPropsForm = () => {
 
                                             {/*<div className="col-span-full">*/}
                                             {/*    <label htmlFor="street-address"*/}
-                                            {/*           className="block text-sm font-medium leading-6 text-gray-900">Street*/}
+                                            {/*           className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Street*/}
                                             {/*        address</label>*/}
                                             {/*    <div className="mt-2">*/}
                                             {/*        <input type="text" name="street-address" id="street-address"*/}
                                             {/*               autoComplete="street-address"*/}
-                                            {/*               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>*/}
+                                            {/*               className="block w-full rounded-md border-0 py-1.5 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>*/}
                                             {/*    </div>*/}
                                             {/*</div>*/}
 
                                             {/*<div className="sm:col-span-2 sm:col-start-1">*/}
                                             {/*    <label htmlFor="city"*/}
-                                            {/*           className="block text-sm font-medium leading-6 text-gray-900">City</label>*/}
+                                            {/*           className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">City</label>*/}
                                             {/*    <div className="mt-2">*/}
                                             {/*        <input type="text" name="city" id="city"*/}
                                             {/*               autoComplete="address-level2"*/}
-                                            {/*               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>*/}
+                                            {/*               className="block w-full rounded-md border-0 py-1.5 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>*/}
                                             {/*    </div>*/}
                                             {/*</div>*/}
 
                                             {/*<div className="sm:col-span-2">*/}
                                             {/*    <label htmlFor="region"*/}
-                                            {/*           className="block text-sm font-medium leading-6 text-gray-900">State*/}
+                                            {/*           className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">State*/}
                                             {/*        / Province</label>*/}
                                             {/*    <div className="mt-2">*/}
                                             {/*        <input type="text" name="region" id="region"*/}
                                             {/*               autoComplete="address-level1"*/}
-                                            {/*               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>*/}
+                                            {/*               className="block w-full rounded-md border-0 py-1.5 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>*/}
                                             {/*    </div>*/}
                                             {/*</div>*/}
 
                                             {/*<div className="sm:col-span-2">*/}
                                             {/*    <label htmlFor="postal-code"*/}
-                                            {/*           className="block text-sm font-medium leading-6 text-gray-900">ZIP*/}
+                                            {/*           className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">ZIP*/}
                                             {/*        / Postal code</label>*/}
                                             {/*    <div className="mt-2">*/}
                                             {/*        <input type="text" name="postal-code" id="postal-code"*/}
                                             {/*               autoComplete="postal-code"*/}
-                                            {/*               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>*/}
+                                            {/*               className="block w-full rounded-md border-0 py-1.5 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>*/}
                                             {/*    </div>*/}
                                             {/*</div>*/}
                                         </div>
@@ -453,7 +453,7 @@ export const PredictionPropsForm = () => {
                         </div>
 
                         <div className="mt-6 flex items-center justify-end gap-x-6">
-                            {/*<button type="button" className="text-sm font-semibold leading-6 text-gray-900">Cancel</button>*/}
+                            {/*<button type="button" className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Cancel</button>*/}
                             <button type="submit"
                                     className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save
                             </button>

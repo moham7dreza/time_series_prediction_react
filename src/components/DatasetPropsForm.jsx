@@ -75,14 +75,14 @@ export const DatasetPropsForm = () => {
                     <Form>
                         <div className="space-y-12">
                             <div className="border-b border-gray-900/10 pb-12">
-                                <h2 className="text-base font-semibold leading-7 text-gray-900">Dataset
+                                <h2 className="text-base font-semibold leading-7 text-gray-800 dark:text-gray-300 dark:hover:text-white">Dataset
                                     Properties</h2>
 
                                 <section className="flex space-x-20 space-y-12">
 
                                     <div className="mt-10 space-y-10">
                                         <fieldset>
-                                            <legend className="text-sm font-semibold leading-6 text-gray-900">Choice
+                                            <legend className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Choice
                                                 Datasets
                                                 ...
                                             </legend>
@@ -96,7 +96,7 @@ export const DatasetPropsForm = () => {
                                                         </div>
                                                         <div className="text-sm leading-6">
                                                             <label htmlFor={`dataset-${dataset}`}
-                                                                   className="font-medium text-gray-900">{dataset}</label>
+                                                                   className="font-medium text-gray-800 dark:text-gray-300 dark:hover:text-white">{dataset}</label>
                                                             <ErrorMessage name={`dataset-${dataset}`}>
                                                                 {message => (<div
                                                                     className={'text-red-500 my-2'}>{message}</div>)}
@@ -111,7 +111,7 @@ export const DatasetPropsForm = () => {
                                     </div>
                                     <div className="mt-10 space-y-10">
                                         <fieldset>
-                                            <legend className="text-sm font-semibold leading-6 text-gray-900">Choice
+                                            <legend className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Choice
                                                 Prices
                                                 ...
                                             </legend>
@@ -125,7 +125,7 @@ export const DatasetPropsForm = () => {
                                                         </div>
                                                         <div className="text-sm leading-6">
                                                             <label htmlFor={`price-${price}`}
-                                                                   className="font-medium text-gray-900">{price}</label>
+                                                                   className="font-medium text-gray-800 dark:text-gray-300 dark:hover:text-white">{price}</label>
                                                             <ErrorMessage name={`price-${price}`}>
                                                                 {message => (<div
                                                                     className={'text-red-500 my-2'}>{message}</div>)}
@@ -139,7 +139,7 @@ export const DatasetPropsForm = () => {
                                         </fieldset>
                                     </div>
                                     <div className="mt-10 border-b border-gray-900/10 pb-12">
-                                        <legend className="text-sm font-semibold leading-6 text-gray-900">Enter props
+                                        <legend className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Enter props
                                             ...
                                         </legend>
                                         <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -156,7 +156,7 @@ export const DatasetPropsForm = () => {
                         </div>
 
                         <div className="mt-6 flex items-center justify-end gap-x-6">
-                            {/*<button type="button" className="text-sm font-semibold leading-6 text-gray-900">Cancel</button>*/}
+                            {/*<button type="button" className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Cancel</button>*/}
                             <button type="submit"
                                     className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save
                             </button>

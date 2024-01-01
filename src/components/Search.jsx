@@ -15,7 +15,7 @@ export const Search = () => {
                             Stock Price Prediction
                         </h1>
 
-                        <p className="mt-3 text-gray-600 dark:text-gray-400">
+                        <p className="mt-6 text-gray-600 dark:text-gray-400">
                             With Machine Learning and Artificial Intelligence
                         </p>
 
