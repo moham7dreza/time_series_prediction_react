@@ -3,11 +3,11 @@
 import React, {useContext, useEffect, useRef} from 'react';
 import Chart from 'chart.js/auto';
 import {StockContext} from "../context/StockContext";
-import {Helmet} from "react-helmet";
+import {Helmet} from "react-helmet-async";
 import {toast} from "react-toastify";
 
 const StockChart = () => {
-    const {setLoading, loading, predicts, datasets, series, models, prices, metricsData} = useContext(StockContext)
+    const {predicts, metricsData} = useContext(StockContext)
     const chartRefs = useRef(null);
     const metricsChartRefs = useRef(null);
     const metricChartRef = useRef(null);

@@ -7,7 +7,7 @@ const Header = () => {
                 className="mt-6 relative max-w-[85rem] w-full bg-white border border-gray-200 rounded-[36px] mx-2 py-3 px-4 md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-gray-800 dark:border-gray-700"
                 aria-label="Global">
                 <div className="flex items-center justify-between">
-                    <a className="flex-none text-xl font-semibold dark:text-white" aria-label="Brand">Stock</a>
+                    <Link to={'/'} className="flex-none text-xl font-semibold dark:text-white" aria-label="Brand">Stock</Link>
                     <div className="md:hidden">
                         <button type="button"
                                 className="hs-collapse-toggle w-8 h-8 flex justify-center items-center text-sm font-semibold rounded-full border border-gray-200 text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"

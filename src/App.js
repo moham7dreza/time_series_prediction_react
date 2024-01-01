@@ -13,6 +13,7 @@ import {useState} from "react";
 import {transformObject} from "./helpers/Transformers";
 import StockResultChart from "./components/StockResultChart";
 import {DatasetPropsForm} from "./components/DatasetPropsForm";
+import {Helmet, HelmetProvider} from 'react-helmet-async';
 
 function App() {
     const [predicts, setPredicts] = useState({})
@@ -119,26 +120,32 @@ function App() {
     }
     return (
         <>
-            <StockContext.Provider value={context}>
-                <ToastContainer/>
-                <Header/>
+            <HelmetProvider>
+                <Helmet>
+                    <title>Stock</title>
+                </Helmet>
+                <StockContext.Provider value={context}>
+                    <ToastContainer/>
+                    <Header/>
 
-                <Routes>
-                    <Route path={'/dashboard'} element={<Dashboard/>}/>
-                    <Route path={'/search'} element={<Search/>}/>
-                    <Route path={'/prediction-props'} element={<PredictionPropsForm/>}/>
-                    <Route path={'/dataset-props'} element={<DatasetPropsForm/>}/>
-                    <Route path={'/load-datasets'} element={<StockChart/>}/>
-                    <Route path={'/predicts'} element={<StockResultChart/>}/>
-                </Routes>
-                {/*<div className="App">*/}
-                {/*    <header className="w-60 h-60 flex items-center justify-center">*/}
-                {/*        <img src={logo} className="App-logo" alt="logo"/>*/}
-                {/*    </header>*/}
-                {/*</div>*/}
-                <IconSection/>
-                <Footer/>
-            </StockContext.Provider>
+                    <Routes>
+                        <Route path={'/'} element={<Search/>}/>
+                        <Route path={'/dashboard'} element={<Dashboard/>}/>
+                        <Route path={'/search'} element={<Search/>}/>
+                        <Route path={'/prediction-props'} element={<PredictionPropsForm/>}/>
+                        <Route path={'/dataset-props'} element={<DatasetPropsForm/>}/>
+                        <Route path={'/load-datasets'} element={<StockChart/>}/>
+                        <Route path={'/predicts'} element={<StockResultChart/>}/>
+                    </Routes>
+                    {/*<div className="App">*/}
+                    {/*    <header className="w-60 h-60 flex items-center justify-center">*/}
+                    {/*        <img src={logo} className="App-logo" alt="logo"/>*/}
+                    {/*    </header>*/}
+                    {/*</div>*/}
+                    <IconSection/>
+                    <Footer/>
+                </StockContext.Provider>
+            </HelmetProvider>
         </>
     );
 }

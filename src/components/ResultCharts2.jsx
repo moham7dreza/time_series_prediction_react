@@ -5,7 +5,7 @@ import Chart from 'chart.js/auto';
 import {StockContext} from "../context/StockContext";
 
 const ResultCharts = () => {
-    const {setLoading, loading, predicts, datasets, series, models} = useContext(StockContext)
+    const {predicts} = useContext(StockContext)
 
     useEffect(() => {
         // Function to render a chart

@@ -6,7 +6,7 @@ import {ErrorMessage, Field, Form, Formik} from "formik";
 import Datepicker from "react-tailwindcss-datepicker";
 import {Spinner} from "./Spinner";
 import * as YUP from "yup";
-import {Helmet} from "react-helmet";
+import {Helmet} from "react-helmet-async";
 
 export const DatasetPropsForm = () => {
     const {

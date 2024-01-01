@@ -8,7 +8,7 @@ import {Spinner} from "./Spinner";
 const ResultCharts = () => {
     const chartRefs = useRef(null);
 
-    const {setLoading, loading, predicts, datasets, series, models, prices} = useContext(StockContext)
+    const {loading, predicts} = useContext(StockContext)
 
     useEffect(() => {
         // Initialize chartRefs.current as an empty array

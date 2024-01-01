@@ -2,7 +2,7 @@
 
 import React, {useContext, useEffect, useRef} from 'react';
 import Chart from 'chart.js/auto';
-import {Helmet} from "react-helmet";
+import {Helmet} from "react-helmet-async";
 import {StockContext} from "../context/StockContext";
 
 const StockChart = () => {
