@@ -125,7 +125,7 @@ function App() {
                     <title>Stock</title>
                 </Helmet>
                 <StockContext.Provider value={context}>
-                    <ToastContainer/>
+                    <ToastContainer theme={'dark'} position={'top-left'} draggable/>
                     <div className="h-full">
                         <div className="bg-slate-900 flex h-full">
                             <div className="max-w-[80rem] flex flex-col mx-auto w-full h-full">

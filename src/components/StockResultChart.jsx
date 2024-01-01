@@ -220,7 +220,7 @@ const StockChart = () => {
             </Helmet>
             {
                 predicts.map((dataset, index) => (
-                    <section key={index + 10}>
+                    <section key={index + 10} className={'px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto rounded-2xl shadow-2xl mt-5 text-gray-800 dark:text-gray-300 dark:hover:text-white'}>
                         {/* Card Blog */
                         }
                         <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
@@ -253,7 +253,7 @@ const StockChart = () => {
             }
             {
                 metricsData.map((dataset, index) => (
-                    <section>
+                    <section className={'px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto rounded-2xl shadow-2xl mt-5 text-gray-800 dark:text-gray-300 dark:hover:text-white'}>
                         {/* Card Blog */
                         }
                         <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">

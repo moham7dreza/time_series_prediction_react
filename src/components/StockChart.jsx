@@ -109,7 +109,7 @@ const StockChart = () => {
             </Helmet>
             {
                 stockData.map((dataset, index) => (
-                    <section>
+                    <section className={'px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto rounded-2xl shadow-2xl mt-5 text-gray-800 dark:text-gray-300 dark:hover:text-white'}>
                         {/* Card Blog */
                         }
                         <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
@@ -120,7 +120,7 @@ const StockChart = () => {
                                 >
                                     <div key={index}>
                                         <span
-                                            className={'flex items-center justify-center'}>{`${dataset[0]} close prices`}</span>
+                                            className={'flex items-center justify-center mb-8 text-3xl font-bold dark:text-gray-500'}>{`${dataset[0]} Dataset Price`}</span>
                                         <canvas id={`stockChart-${index}`} width="400" height="200"></canvas>
                                     </div>
                                 </a>
