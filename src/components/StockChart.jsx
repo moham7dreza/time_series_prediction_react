@@ -1,8 +1,7 @@
 // StockChart.js
 
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef} from 'react';
 import Chart from 'chart.js/auto';
-import {toast} from "react-toastify";
 import {Helmet} from "react-helmet";
 import {StockContext} from "../context/StockContext";
 
@@ -89,7 +88,7 @@ const StockChart = () => {
                             enabled: true,
                             mode: 'index'
                         },
-                        datalabels:{
+                        datalabels: {
                             display: true
                         },
                         title: {

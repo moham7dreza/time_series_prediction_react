@@ -9,10 +9,8 @@ import {Search} from "./components/Search";
 import {Dashboard} from "./components/Dashboard";
 import {IconSection} from "./components/IconSection";
 import {StockContext} from "./context/StockContext";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {transformObject} from "./helpers/Transformers";
-import ResultCharts from "./components/ResultCharts";
-import ResultCharts2 from "./components/ResultCharts2";
 import StockResultChart from "./components/StockResultChart";
 import {DatasetPropsForm} from "./components/DatasetPropsForm";
 

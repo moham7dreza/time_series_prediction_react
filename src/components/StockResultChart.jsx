@@ -108,7 +108,7 @@ const StockChart = () => {
                             enabled: true,
                             mode: 'index'
                         },
-                        datalabels:{
+                        datalabels: {
                             display: true
                         },
                         title: {
@@ -173,7 +173,7 @@ const StockChart = () => {
                             enabled: true,
                             mode: 'index'
                         },
-                        datalabels:{
+                        datalabels: {
                             display: true
                         },
                         title: {

@@ -1,9 +1,8 @@
 // StockChart.js
 
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import Chart from 'chart.js/auto';
 import {StockContext} from "../context/StockContext";
-import {Spinner} from "./Spinner";
 
 const ResultCharts = () => {
     const {setLoading, loading, predicts, datasets, series, models} = useContext(StockContext)
