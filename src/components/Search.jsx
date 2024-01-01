@@ -1,4 +1,5 @@
 import {Helmet} from "react-helmet-async";
+import {Slider} from "./Slider";
 
 export const Search = () => {
     return (
@@ -135,6 +136,9 @@ export const Search = () => {
                 </div>
             </div>
             {/* End Hero */}
+            <Slider/>
+            <Slider/>
+            <Slider/>
         </>
     );
 };
