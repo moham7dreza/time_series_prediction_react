@@ -126,24 +126,34 @@ function App() {
                 </Helmet>
                 <StockContext.Provider value={context}>
                     <ToastContainer/>
-                    <Header/>
+                    <div className="h-full">
+                        <div className="bg-slate-900 flex h-full">
+                            <div className="max-w-[80rem] flex flex-col mx-auto w-full h-full">
+                                {/*<!-- ========== HEADER ========== -->*/}
+                                <Header/>
+                                {/*<!-- ========== END HEADER ========== -->*/}
 
-                    <Routes>
-                        <Route path={'/'} element={<Search/>}/>
-                        <Route path={'/dashboard'} element={<Dashboard/>}/>
-                        <Route path={'/search'} element={<Search/>}/>
-                        <Route path={'/prediction-props'} element={<PredictionPropsForm/>}/>
-                        <Route path={'/dataset-props'} element={<DatasetPropsForm/>}/>
-                        <Route path={'/load-datasets'} element={<StockChart/>}/>
-                        <Route path={'/predicts'} element={<StockResultChart/>}/>
-                    </Routes>
-                    {/*<div className="App">*/}
-                    {/*    <header className="w-60 h-60 flex items-center justify-center">*/}
-                    {/*        <img src={logo} className="App-logo" alt="logo"/>*/}
-                    {/*    </header>*/}
-                    {/*</div>*/}
-                    <IconSection/>
-                    <Footer/>
+                                {/*<!-- ========== MAIN CONTENT ========== -->*/}
+                                <main id="content" role="main">
+                                    <Routes>
+                                        <Route path={'/'} element={<Search/>}/>
+                                        <Route path={'/dashboard'} element={<Dashboard/>}/>
+                                        <Route path={'/search'} element={<Search/>}/>
+                                        <Route path={'/prediction-props'} element={<PredictionPropsForm/>}/>
+                                        <Route path={'/dataset-props'} element={<DatasetPropsForm/>}/>
+                                        <Route path={'/load-datasets'} element={<StockChart/>}/>
+                                        <Route path={'/predicts'} element={<StockResultChart/>}/>
+                                    </Routes>
+                                </main>
+                                {/*<!-- ========== END MAIN CONTENT ========== -->*/}
+
+                                {/*<!-- ========== FOOTER ========== -->*/}
+                                <IconSection/>
+                                <Footer/>
+                                {/*<!-- ========== END FOOTER ========== -->*/}
+                            </div>
+                        </div>
+                    </div>
                 </StockContext.Provider>
             </HelmetProvider>
         </>
