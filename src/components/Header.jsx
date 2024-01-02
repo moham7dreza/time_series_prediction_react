@@ -1,13 +1,25 @@
 import {Link} from "react-router-dom";
+import {FaMoon, FaSun} from "react-icons/fa";
+import {useContext} from "react";
+import {StockContext} from "../context/StockContext";
+import {FiMoon, FiSun} from "react-icons/fi";
 
 const Header = () => {
+    const {isDarkMode, setIsDarkMode} = useContext(StockContext)
     return (
         <header className="flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm">
             <nav
                 className="mt-6 relative max-w-[85rem] w-full bg-white border border-gray-200 rounded-[36px] mx-2 py-3 px-4 md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-gray-800 dark:border-gray-700"
                 aria-label="Global">
                 <div className="flex items-center justify-between">
-                    <Link to={'/'} className="flex-none text-xl font-semibold dark:text-white" aria-label="Brand">Stock</Link>
+                    <div className={'flex items-center justify-center space-x-3'}>
+                        <Link to={'/'} className="flex-none text-xl font-semibold dark:text-white"
+                              aria-label="Brand">Stock</Link>
+                        <button onClick={() => setIsDarkMode(!isDarkMode)}
+                                className="dark:hover:text-indigo-300 hover:text-indigo-600 dark:text-white font-bold py-2 px-4 rounded shadow-sm text-xl">
+                            {isDarkMode ? <FiSun /> : <FiMoon />}
+                        </button>
+                    </div>
                     <div className="md:hidden">
                         <button type="button"
                                 className="hs-collapse-toggle w-8 h-8 flex justify-center items-center text-sm font-semibold rounded-full border border-gray-200 text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"

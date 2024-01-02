@@ -117,6 +117,20 @@ const StockChart = () => {
                             // other options...
                         },
                     },
+                    theme: {
+                        // Light mode colors
+                        monochrome: {
+                            enabled: true,
+                            color: '#333',
+                        },
+                        // Dark mode colors
+                        dark: {
+                            monochrome: {
+                                enabled: true,
+                                color: '#fff',
+                            },
+                        },
+                    },
                     // scales: {
                     //     x: {
                     //         display: true,
@@ -182,6 +196,20 @@ const StockChart = () => {
                             // other options...
                         },
                     },
+                    theme: {
+                        // Light mode colors
+                        monochrome: {
+                            enabled: true,
+                            color: '#333',
+                        },
+                        // Dark mode colors
+                        dark: {
+                            monochrome: {
+                                enabled: true,
+                                color: '#fff',
+                            },
+                        },
+                    },
                     // scales: {
                     //     x: {
                     //         display: true,
@@ -220,7 +248,7 @@ const StockChart = () => {
             </Helmet>
             {
                 predicts.map((dataset, index) => (
-                    <section key={index + 10} className={'px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto rounded-2xl shadow-2xl mt-5 text-gray-800 dark:text-gray-300 dark:hover:text-white'}>
+                    <section key={index + 10} className={'px-4 py-10 sm:px-6 dark:bg-gray-800 lg:px-8 lg:py-14 mx-auto rounded-2xl shadow-2xl mt-5 text-gray-800 dark:text-gray-300 dark:hover:text-white'}>
                         {/* Card Blog */
                         }
                         <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
@@ -253,7 +281,7 @@ const StockChart = () => {
             }
             {
                 metricsData.map((dataset, index) => (
-                    <section className={'px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto rounded-2xl shadow-2xl mt-5 text-gray-800 dark:text-gray-300 dark:hover:text-white'}>
+                    <section className={'px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto dark:bg-gray-800 rounded-2xl shadow-2xl mt-5 text-gray-800 dark:text-gray-300 dark:hover:text-white'}>
                         {/* Card Blog */
                         }
                         <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">

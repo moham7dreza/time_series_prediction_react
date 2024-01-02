@@ -68,7 +68,7 @@ export const DatasetPropsForm = () => {
             <Helmet>
                 <title>Dataset Props</title>
             </Helmet>
-            {loading ? <Spinner/> : <div className="max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+            {loading ? <Spinner/> : <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto rounded-2xl shadow-2xl mt-5">
                 <Formik
                     initialValues={initialValues}
                     onSubmit={values => submitDatasets(values)} validationSchema={validation}>

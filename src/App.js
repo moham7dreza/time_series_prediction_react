@@ -9,7 +9,7 @@ import {Search} from "./components/Search";
 import {Dashboard} from "./components/Dashboard";
 import {IconSection} from "./components/IconSection";
 import {StockContext} from "./context/StockContext";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {transformObject} from "./helpers/Transformers";
 import StockResultChart from "./components/StockResultChart";
 import {DatasetPropsForm} from "./components/DatasetPropsForm";
@@ -26,6 +26,7 @@ function App() {
     const [lastPredProps, setLastPredProps] = useState([]);
     const [metrics, setMetrics] = useState([]);
     const [metricsData, setMetricsData] = useState([]);
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
     const nav = useNavigate()
 
@@ -33,6 +34,15 @@ function App() {
         startDate: new Date('2017-11-06').toISOString().split('T')[0],
         endDate: new Date('2022-12-06').toISOString().split('T')[0]
     });
+
+    useEffect(() => {
+        const body = document.body;
+        if (isDarkMode) {
+            body.classList.add('dark');
+        } else {
+            body.classList.remove('dark');
+        }
+    }, [isDarkMode]);
 
     const handleDateChange = (newValue) => {
         // console.log("newValue:", newValue);
@@ -114,7 +124,7 @@ function App() {
         predicts, submitPredictions, date, handleDateChange, loading, setLoading, models,
         setModels, submitDatasets, stockData, lastPredProps, setLastPredProps,
         datasets, metrics, setMetrics, metricsData,
-        setDatasets,
+        setDatasets, isDarkMode, setIsDarkMode,
         series,
         setSeries, prices, setPrices
     }
@@ -125,9 +135,9 @@ function App() {
                     <title>Stock</title>
                 </Helmet>
                 <StockContext.Provider value={context}>
-                    <ToastContainer theme={'dark'} position={'top-left'} draggable/>
+                    <ToastContainer theme={isDarkMode ? 'dark' : 'light'} position={'top-left'} draggable/>
                     <div className="h-full">
-                        <div className="bg-slate-900 flex h-full">
+                        <div className="dark:bg-slate-900 flex h-full">
                             <div className="max-w-[80rem] flex flex-col mx-auto w-full h-full">
                                 {/*<!-- ========== HEADER ========== -->*/}
                                 <Header/>

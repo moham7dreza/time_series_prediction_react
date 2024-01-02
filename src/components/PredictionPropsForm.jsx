@@ -113,7 +113,7 @@ export const PredictionPropsForm = () => {
             <Helmet>
                 <title>Props</title>
             </Helmet>
-            {loading ? <Spinner/> : <div className="max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+            {loading ? <Spinner/> : <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto rounded-2xl shadow-2xl mt-5">
                 <Formik
                     initialValues={initialValues}
                     onSubmit={values => submitPredictions(values)} validationSchema={PredictValidation}>
@@ -258,35 +258,6 @@ export const PredictionPropsForm = () => {
 
                                             </div>
                                         </fieldset>
-                                        {/*<fieldset>*/}
-                                        {/*    <legend className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Push Notifications*/}
-                                        {/*    </legend>*/}
-                                        {/*    <p className="mt-1 text-sm leading-6 text-gray-600">These are delivered via SMS to*/}
-                                        {/*        your*/}
-                                        {/*        mobile phone.</p>*/}
-                                        {/*    <div className="mt-6 space-y-6">*/}
-                                        {/*        <div className="flex items-center gap-x-3">*/}
-                                        {/*            <input id="push-everything" name="push-notifications" type="radio"*/}
-                                        {/*                   className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"/>*/}
-                                        {/*            <label htmlFor="push-everything"*/}
-                                        {/*                   className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Everything</label>*/}
-                                        {/*        </div>*/}
-                                        {/*        <div className="flex items-center gap-x-3">*/}
-                                        {/*            <input id="push-email" name="push-notifications" type="radio"*/}
-                                        {/*                   className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"/>*/}
-                                        {/*            <label htmlFor="push-email"*/}
-                                        {/*                   className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Same as*/}
-                                        {/*                email</label>*/}
-                                        {/*        </div>*/}
-                                        {/*        <div className="flex items-center gap-x-3">*/}
-                                        {/*            <input id="push-nothing" name="push-notifications" type="radio"*/}
-                                        {/*                   className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"/>*/}
-                                        {/*            <label htmlFor="push-nothing"*/}
-                                        {/*                   className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">No push*/}
-                                        {/*                notifications</label>*/}
-                                        {/*        </div>*/}
-                                        {/*    </div>*/}
-                                        {/*</fieldset>*/}
                                     </div>
                                     <div className={'mt-10 space-y-10'}>
                                         <fieldset className={'mt-0'}>
@@ -316,35 +287,6 @@ export const PredictionPropsForm = () => {
 
                                             </div>
                                         </fieldset>
-                                        {/*<fieldset>*/}
-                                        {/*    <legend className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Push Notifications*/}
-                                        {/*    </legend>*/}
-                                        {/*    <p className="mt-1 text-sm leading-6 text-gray-600">These are delivered via SMS to*/}
-                                        {/*        your*/}
-                                        {/*        mobile phone.</p>*/}
-                                        {/*    <div className="mt-6 space-y-6">*/}
-                                        {/*        <div className="flex items-center gap-x-3">*/}
-                                        {/*            <input id="push-everything" name="push-notifications" type="radio"*/}
-                                        {/*                   className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"/>*/}
-                                        {/*            <label htmlFor="push-everything"*/}
-                                        {/*                   className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Everything</label>*/}
-                                        {/*        </div>*/}
-                                        {/*        <div className="flex items-center gap-x-3">*/}
-                                        {/*            <input id="push-email" name="push-notifications" type="radio"*/}
-                                        {/*                   className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"/>*/}
-                                        {/*            <label htmlFor="push-email"*/}
-                                        {/*                   className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Same as*/}
-                                        {/*                email</label>*/}
-                                        {/*        </div>*/}
-                                        {/*        <div className="flex items-center gap-x-3">*/}
-                                        {/*            <input id="push-nothing" name="push-notifications" type="radio"*/}
-                                        {/*                   className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"/>*/}
-                                        {/*            <label htmlFor="push-nothing"*/}
-                                        {/*                   className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">No push*/}
-                                        {/*                notifications</label>*/}
-                                        {/*        </div>*/}
-                                        {/*    </div>*/}
-                                        {/*</fieldset>*/}
                                     </div>
                                     <div className="mt-10 border-b border-gray-900/10 pb-12">
                                         <legend className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Enter props
@@ -358,7 +300,9 @@ export const PredictionPropsForm = () => {
                                                 <div className="mt-2">
                                                     <Field type="text" name="n_steps"
                                                            autoComplete="3"
-                                                           className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+                                                           // className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                           className="block w-full rounded-md py-1.5 px-2 ps-3 bg-transparent dark:bg-slate-800 transition duration-300 ease-in-out border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                                    />
                                                 </div>
                                                 <ErrorMessage name={'n_steps'}>
                                                     {message => (<div className={'text-red-500 my-2'}>{message}</div>)}
@@ -370,82 +314,6 @@ export const PredictionPropsForm = () => {
                                                     onChange={handleDateChange}
                                                 />
                                             </div>
-                                            {/*<div className="sm:col-span-3">*/}
-                                            {/*    <label htmlFor="last-name"*/}
-                                            {/*           className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Last*/}
-                                            {/*        name</label>*/}
-                                            {/*    <div className="mt-2">*/}
-                                            {/*        <input type="text" name="last-name" id="last-name"*/}
-                                            {/*               autoComplete="family-name"*/}
-                                            {/*               className="block w-full rounded-md border-0 py-1.5 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>*/}
-                                            {/*    </div>*/}
-                                            {/*</div>*/}
-
-                                            {/*<div className="sm:col-span-4">*/}
-                                            {/*    <label htmlFor="email"*/}
-                                            {/*           className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Email*/}
-                                            {/*        address</label>*/}
-                                            {/*    <div className="mt-2">*/}
-                                            {/*        <input id="email" name="email" type="email" autoComplete="email"*/}
-                                            {/*               className="block w-full rounded-md border-0 py-1.5 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>*/}
-                                            {/*    </div>*/}
-                                            {/*</div>*/}
-
-                                            {/*<div className="sm:col-span-3">*/}
-                                            {/*    <label htmlFor="country"*/}
-                                            {/*           className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Country</label>*/}
-                                            {/*    <div className="mt-2">*/}
-                                            {/*        <select id="country" name="country" autoComplete="country-name"*/}
-                                            {/*                className="block w-full rounded-md border-0 py-1.5 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">*/}
-                                            {/*            <option>United States</option>*/}
-                                            {/*            <option>Canada</option>*/}
-                                            {/*            <option>Mexico</option>*/}
-                                            {/*        </select>*/}
-                                            {/*    </div>*/}
-                                            {/*</div>*/}
-
-                                            {/*<div className="col-span-full">*/}
-                                            {/*    <label htmlFor="street-address"*/}
-                                            {/*           className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Street*/}
-                                            {/*        address</label>*/}
-                                            {/*    <div className="mt-2">*/}
-                                            {/*        <input type="text" name="street-address" id="street-address"*/}
-                                            {/*               autoComplete="street-address"*/}
-                                            {/*               className="block w-full rounded-md border-0 py-1.5 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>*/}
-                                            {/*    </div>*/}
-                                            {/*</div>*/}
-
-                                            {/*<div className="sm:col-span-2 sm:col-start-1">*/}
-                                            {/*    <label htmlFor="city"*/}
-                                            {/*           className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">City</label>*/}
-                                            {/*    <div className="mt-2">*/}
-                                            {/*        <input type="text" name="city" id="city"*/}
-                                            {/*               autoComplete="address-level2"*/}
-                                            {/*               className="block w-full rounded-md border-0 py-1.5 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>*/}
-                                            {/*    </div>*/}
-                                            {/*</div>*/}
-
-                                            {/*<div className="sm:col-span-2">*/}
-                                            {/*    <label htmlFor="region"*/}
-                                            {/*           className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">State*/}
-                                            {/*        / Province</label>*/}
-                                            {/*    <div className="mt-2">*/}
-                                            {/*        <input type="text" name="region" id="region"*/}
-                                            {/*               autoComplete="address-level1"*/}
-                                            {/*               className="block w-full rounded-md border-0 py-1.5 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>*/}
-                                            {/*    </div>*/}
-                                            {/*</div>*/}
-
-                                            {/*<div className="sm:col-span-2">*/}
-                                            {/*    <label htmlFor="postal-code"*/}
-                                            {/*           className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">ZIP*/}
-                                            {/*        / Postal code</label>*/}
-                                            {/*    <div className="mt-2">*/}
-                                            {/*        <input type="text" name="postal-code" id="postal-code"*/}
-                                            {/*               autoComplete="postal-code"*/}
-                                            {/*               className="block w-full rounded-md border-0 py-1.5 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>*/}
-                                            {/*    </div>*/}
-                                            {/*</div>*/}
                                         </div>
                                     </div>
                                 </section>
