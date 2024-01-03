@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+# React Front-End App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the React Front-End App associated with the Flask API. This front-end application provides a user interface to interact with the Flask API.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Prerequisites](#prerequisites)
+- [Setup](#setup)
+- [Running the Project](#running-the-project)
+- [Application Structure](#application-structure)
+- [Deployment](#deployment)
+- [Additional Information](#additional-information)
 
-### `npm start`
+## Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Before getting started, make sure you have the following prerequisites installed on your system:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [Node.js](https://nodejs.org/)
 
-### `npm test`
+## Setup
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the Repository:**
 
-### `npm run build`
+    ```bash
+    git clone https://github.com/moham7dreza/time_series_prediction_react
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Navigate to the Project Directory:**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    ```bash
+    cd time_series_prediction_react
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Install Dependencies:**
 
-### `npm run eject`
+    ```bash
+    npm install
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Running the Project
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Ensure that your Flask API server is running. If not, follow the steps in the [API App README](link-to-api-readme.md) to start the Flask API.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. In the React front-end project directory, run the following command to start the development server:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    ```bash
+    npm start
+    ```
 
-## Learn More
+3. Access the React front-end application at [http://localhost:3000](http://localhost:3000) in your web browser.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+That's it! You should now have both the Flask API and React Front-End running seamlessly with an organized project structure. If you encounter any issues, please check your configurations and ensure that all prerequisites are correctly installed.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Enjoy building with React!
+## Application Structure
 
-### Code Splitting
+The React front-end project is organized with the following structure:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- `src/components`: Contains React components responsible for rendering UI elements.
+- `src/services`: Manages API calls and communication with the Flask API.
+- `src/config`: Holds configuration files for the application.
+- `src/contexts`: Contains React context providers for managing global state.
+- `src/helpers`: Houses utility functions and helper modules.
+- `src/validation`: Contains validation logic and validation-related components.
+- `src/customHooks`: Includes custom React hooks for reusable logic.
 
-### Analyzing the Bundle Size
+Feel free to explore each directory to understand its purpose and extend the application structure based on your requirements.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Components
 
-### Making a Progressive Web App
+The `src/components` directory is where you'll find React components responsible for rendering UI elements. Each component is designed to be modular, promoting reusability and maintainability.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Services
 
-### Advanced Configuration
+The `src/services` directory manages API calls and communication with the Flask API. You'll find modules that encapsulate logic for interacting with different API endpoints.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Config
 
-### Deployment
+The `src/config` directory holds configuration files for the application. This can include settings, environment variables, or any configuration needed across the application.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Contexts
 
-### `npm run build` fails to minify
+The `src/contexts` directory contains React context providers. These providers manage global state that can be shared across multiple components.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Helpers
+
+The `src/helpers` directory houses utility functions and helper modules. These functions can be used across the application for common tasks or calculations.
+
+### Validation
+
+The `src/validation` directory contains validation logic and validation-related components. This is where you can centralize form validation or any data validation needed in your application.
+
+### Custom Hooks
+
+The `src/customHooks` directory includes custom React hooks for reusable logic. These hooks can encapsulate complex logic and be shared among different components.
+
+Feel free to customize and extend each directory based on your project's specific needs. This organized structure aims to enhance code maintainability, scalability, and collaboration within your React front-end project.
+
+
