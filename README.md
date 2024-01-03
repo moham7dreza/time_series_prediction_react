@@ -7,9 +7,11 @@ Welcome to the React Front-End App associated with the Flask API. This front-end
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
 - [Running the Project](#running-the-project)
-- [Application Structure](#application-structure)
 - [Deployment](#deployment)
-- [Additional Information](#additional-information)
+- [Python Flask API Integration](#python-flask-api-integration)
+- [Technologies Used](#technologies-used)
+- [Application Structure](#application-structure)
+- [Issues and Questions](#issues-and-questions)
 
 ## Prerequisites
 
