@@ -52,6 +52,73 @@ Before getting started, make sure you have the following prerequisites installed
 That's it! You should now have both the Flask API and React Front-End running seamlessly with an organized project structure. If you encounter any issues, please check your configurations and ensure that all prerequisites are correctly installed.
 
 Enjoy building with React!
+
+## Deployment
+
+To deploy the React app, you can build the production-ready bundle using:
+
+```bash
+cd time_series_prediction_react
+npm run build
+```
+
+This will create an optimized build in the build directory that you can deploy to a web server.
+
+## Python Flask API Integration
+
+The React front-end communicates with a Python Flask API to fetch and send data. Below are details about the API
+integration:
+
+### GitHub Repository
+
+The Python Flask API is hosted on GitHub. You can find the repository at:
+
+- **Repository:
+  ** [https://github.com/moham7dreza/time_series_prediction_flask_api](https://github.com/moham7dreza/time_series_prediction_flask_api)
+
+### Explanation
+
+The API provides various endpoints for retrieving data, performing actions, and interacting with the back-end database.
+Make sure the Flask API is running and accessible from the React front-end.
+
+### Redirection
+
+In your React components or services where API calls are made, ensure that you use the correct API base URL for
+redirection. You may define the API base URL in a configuration file or environment variable for easy management.
+
+Here's an example of how to structure your API calls using the `axios` library in a service file:
+
+```javascript
+// src/services/apiService.js
+
+import axios from 'axios';
+
+const API_BASE_URL = 'https://your-flask-api-url.com';
+
+const apiService = axios.create({
+   baseURL: API_BASE_URL,
+});
+
+export default apiService;
+```
+
+## Technologies Used
+
+The React front-end utilizes various technologies to enhance the development and user experience. Here are some key
+technologies integrated into the project:
+
+### Tailwind CSS
+
+[Tailwind CSS](https://tailwindcss.com/) is used for styling and design. It is a utility-first CSS framework that
+provides low-level utility classes to build designs directly in your markup.
+
+### Chart.js
+
+[Chart.js](https://www.chartjs.org/) is employed for creating interactive and visually appealing charts. It's a simple
+yet flexible JavaScript charting library that allows you to easily embed dynamic charts into your React components.
+
+Feel free to explore these technologies and their documentation to leverage their capabilities in your project.
+
 ## Application Structure
 
 The React front-end project is organized with the following structure:
@@ -96,4 +163,11 @@ The `src/customHooks` directory includes custom React hooks for reusable logic. 
 
 Feel free to customize and extend each directory based on your project's specific needs. This organized structure aims to enhance code maintainability, scalability, and collaboration within your React front-end project.
 
+## Issues and Questions
 
+If you encounter any issues or have questions, please check the documentation or open an issue on the respective GitHub
+repositories:
+
+- please visit the [React GitHub Repository](https://github.com/moham7dreza/time_series_prediction_react).
+- please visit
+  the [Python Flask API GitHub Repository](https://github.com/moham7dreza/time_series_prediction_flask_api).
