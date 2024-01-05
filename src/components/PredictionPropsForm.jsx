@@ -62,6 +62,8 @@ export const PredictionPropsForm = () => {
 
     const PredictValidation = YUP.object().shape({
         n_steps: YUP.number().required('Number of Time Steps is required'),
+        n_top_models_to_ensemble: YUP.number().required('Number of top models is required'),
+        apply_combinations: YUP.boolean().required('apply combinations is required'),
         // ...series.reduce((acc, serie) => {
         //     acc[`serie-${serie}`] = YUP.boolean().required(`${serie} is required`);
         //     return acc;
@@ -85,7 +87,7 @@ export const PredictionPropsForm = () => {
 
     const initialValues = {
         n_steps: 3,
-        n_top_models_to_ensemble: 3,
+        n_top_models_to_ensemble: 0,
         apply_combinations: false,
         ...series.reduce((acc, serie) => {
             acc[`serie-${serie}`] = false;
@@ -300,7 +302,7 @@ export const PredictionPropsForm = () => {
                                                        className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Number
                                                     of Time Steps</label>
                                                 <div className="mt-2">
-                                                    <Field type="text" name="n_steps"
+                                                    <Field type="number" name="n_steps"
                                                            autoComplete="3"
                                                         // className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                            className="block w-full rounded-md py-1.5 px-2 ps-3 bg-transparent dark:bg-slate-800 transition duration-300 ease-in-out border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 focus:ring-blue-500 focus:border-blue-500"
@@ -315,7 +317,7 @@ export const PredictionPropsForm = () => {
                                                        className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Number
                                                     of Top Models To Ensemble</label>
                                                 <div className="mt-2">
-                                                    <Field type="text" name="n_top_models_to_ensemble"
+                                                    <Field type="number" name="n_top_models_to_ensemble"
                                                            autoComplete="3"
                                                         // className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                            className="block w-full rounded-md py-1.5 px-2 ps-3 bg-transparent dark:bg-slate-800 transition duration-300 ease-in-out border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 focus:ring-blue-500 focus:border-blue-500"
