@@ -86,6 +86,7 @@ export const PredictionPropsForm = () => {
     const initialValues = {
         n_steps: 3,
         n_top_models_to_ensemble: 3,
+        apply_combinations: false,
         ...series.reduce((acc, serie) => {
             acc[`serie-${serie}`] = false;
             return acc;
@@ -310,7 +311,7 @@ export const PredictionPropsForm = () => {
                                                 </ErrorMessage>
                                             </div>
                                             <div className="sm:col-span-4">
-                                                <label htmlFor="n_steps"
+                                                <label htmlFor="n_top_models_to_ensemble"
                                                        className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Number
                                                     of Top Models To Ensemble</label>
                                                 <div className="mt-2">
@@ -323,6 +324,24 @@ export const PredictionPropsForm = () => {
                                                 <ErrorMessage name={'n_top_models_to_ensemble'}>
                                                     {message => (<div className={'text-red-500 my-2'}>{message}</div>)}
                                                 </ErrorMessage>
+                                            </div>
+                                            <div className="sm:col-span-4">
+                                                <div className="relative flex gap-x-3">
+                                                    <div className="flex h-6 items-center">
+                                                        <Field name={`apply_combinations`} id={`apply_combinations`}
+                                                               type="checkbox"
+                                                               className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
+                                                    </div>
+                                                    <div className="text-sm leading-6">
+                                                        <label htmlFor={`apply_combinations`}
+                                                               className="font-medium text-gray-800 dark:text-gray-300 dark:hover:text-white">
+                                                            Apply Combinations to Top Models
+                                                        </label>
+                                                        <ErrorMessage name={'apply_combinations'}>
+                                                            {message => (<div className={'text-red-500 my-2'}>{message}</div>)}
+                                                        </ErrorMessage>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div className="sm:col-span-6">
                                                 <Datepicker
