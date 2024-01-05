@@ -85,6 +85,7 @@ export const PredictionPropsForm = () => {
 
     const initialValues = {
         n_steps: 3,
+        n_top_models_to_ensemble: 3,
         ...series.reduce((acc, serie) => {
             acc[`serie-${serie}`] = false;
             return acc;
@@ -300,11 +301,26 @@ export const PredictionPropsForm = () => {
                                                 <div className="mt-2">
                                                     <Field type="text" name="n_steps"
                                                            autoComplete="3"
-                                                           // className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                        // className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                            className="block w-full rounded-md py-1.5 px-2 ps-3 bg-transparent dark:bg-slate-800 transition duration-300 ease-in-out border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 focus:ring-blue-500 focus:border-blue-500"
                                                     />
                                                 </div>
                                                 <ErrorMessage name={'n_steps'}>
+                                                    {message => (<div className={'text-red-500 my-2'}>{message}</div>)}
+                                                </ErrorMessage>
+                                            </div>
+                                            <div className="sm:col-span-4">
+                                                <label htmlFor="n_steps"
+                                                       className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Number
+                                                    of Top Models To Ensemble</label>
+                                                <div className="mt-2">
+                                                    <Field type="text" name="n_top_models_to_ensemble"
+                                                           autoComplete="3"
+                                                        // className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                           className="block w-full rounded-md py-1.5 px-2 ps-3 bg-transparent dark:bg-slate-800 transition duration-300 ease-in-out border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                                    />
+                                                </div>
+                                                <ErrorMessage name={'n_top_models_to_ensemble'}>
                                                     {message => (<div className={'text-red-500 my-2'}>{message}</div>)}
                                                 </ErrorMessage>
                                             </div>
