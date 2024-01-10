@@ -87,6 +87,7 @@ export const PredictionPropsForm = () => {
 
     const initialValues = {
         n_steps: 3,
+        n_predict_future_days: 120,
         n_top_models_to_ensemble: 0,
         apply_combinations: false,
         ...series.reduce((acc, serie) => {
@@ -309,6 +310,22 @@ export const PredictionPropsForm = () => {
                                                     />
                                                 </div>
                                                 <ErrorMessage name={'n_steps'}>
+                                                    {message => (<div className={'text-red-500 my-2'}>{message}</div>)}
+                                                </ErrorMessage>
+                                            </div>
+                                            <div className="sm:col-span-4">
+                                                <label htmlFor="n_predict_future_days"
+                                                       className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">
+                                                    Number of future days to predict
+                                                </label>
+                                                <div className="mt-2">
+                                                    <Field type="number" name="n_predict_future_days"
+                                                           autoComplete="3"
+                                                        // className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                           className="block w-full rounded-md py-1.5 px-2 ps-3 bg-transparent dark:bg-slate-800 transition duration-300 ease-in-out border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                                    />
+                                                </div>
+                                                <ErrorMessage name={'n_predict_future_days'}>
                                                     {message => (<div className={'text-red-500 my-2'}>{message}</div>)}
                                                 </ErrorMessage>
                                             </div>
