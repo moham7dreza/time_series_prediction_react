@@ -88,6 +88,9 @@ export const PredictionPropsForm = () => {
     const initialValues = {
         n_steps: 3,
         test_size: 20,
+        epochs: 100,
+        batch_size: 32,
+        dropout_rate: 20,
         n_predict_future_days: 120,
         n_top_models_to_ensemble: 0,
         apply_combinations: false,
@@ -302,6 +305,18 @@ export const PredictionPropsForm = () => {
                                             </fieldset>
                                         </div>
                                         <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                                            <div className="sm:col-span-6">
+                                                <label
+                                                    className="font-medium text-gray-800 dark:text-gray-300 dark:hover:text-white">
+                                                    Choice Date Range to Predict
+                                                </label>
+                                                <div className={'mt-5 border bg-slate-400 rounded'}>
+                                                    <Datepicker
+                                                        value={date}
+                                                        onChange={handleDateChange}
+                                                    />
+                                                </div>
+                                            </div>
                                             <div className="sm:col-span-4">
                                                 <label htmlFor="n_steps"
                                                        className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Number
@@ -318,6 +333,37 @@ export const PredictionPropsForm = () => {
                                                 </ErrorMessage>
                                             </div>
                                             <div className="sm:col-span-4">
+                                                <label htmlFor="epochs"
+                                                       className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Number
+                                                    of Epochs</label>
+                                                <div className="mt-2">
+                                                    <Field type="number" name="epochs"
+                                                           autoComplete="3"
+                                                        // className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                           className="block w-full rounded-md py-1.5 px-2 ps-3 bg-transparent dark:bg-slate-800 transition duration-300 ease-in-out border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                                    />
+                                                </div>
+                                                <ErrorMessage name={'epochs'}>
+                                                    {message => (<div className={'text-red-500 my-2'}>{message}</div>)}
+                                                </ErrorMessage>
+                                            </div>
+                                            <div className="sm:col-span-4">
+                                                <label htmlFor="batch_size"
+                                                       className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">
+                                                    Batch Size
+                                                </label>
+                                                <div className="mt-2">
+                                                    <Field type="number" name="batch_size"
+                                                           autoComplete="3"
+                                                        // className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                           className="block w-full rounded-md py-1.5 px-2 ps-3 bg-transparent dark:bg-slate-800 transition duration-300 ease-in-out border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                                    />
+                                                </div>
+                                                <ErrorMessage name={'batch_size'}>
+                                                    {message => (<div className={'text-red-500 my-2'}>{message}</div>)}
+                                                </ErrorMessage>
+                                            </div>
+                                            <div className="sm:col-span-4">
                                                 <label htmlFor="test_size"
                                                        className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Test
                                                     Data Percentage</label>
@@ -329,6 +375,21 @@ export const PredictionPropsForm = () => {
                                                     />
                                                 </div>
                                                 <ErrorMessage name={'test_size'}>
+                                                    {message => (<div className={'text-red-500 my-2'}>{message}</div>)}
+                                                </ErrorMessage>
+                                            </div>
+                                            <div className="sm:col-span-4">
+                                                <label htmlFor="dropout_rate"
+                                                       className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Model
+                                                    Dropout Rate Percentage</label>
+                                                <div className="mt-2">
+                                                    <Field type="number" name="dropout_rate"
+                                                           autoComplete="3"
+                                                        // className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                           className="block w-full rounded-md py-1.5 px-2 ps-3 bg-transparent dark:bg-slate-800 transition duration-300 ease-in-out border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                                    />
+                                                </div>
+                                                <ErrorMessage name={'dropout_rate'}>
                                                     {message => (<div className={'text-red-500 my-2'}>{message}</div>)}
                                                 </ErrorMessage>
                                             </div>
@@ -381,12 +442,6 @@ export const PredictionPropsForm = () => {
                                                         </ErrorMessage>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div className="sm:col-span-6">
-                                                <Datepicker
-                                                    value={date}
-                                                    onChange={handleDateChange}
-                                                />
                                             </div>
                                         </div>
                                     </section>

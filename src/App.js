@@ -66,7 +66,8 @@ function App() {
 
             if (!response.ok) {
                 setLoading(false)
-                throw new Error('Network response was not ok');
+                toast.error('i dont receive response from server')
+                // throw new Error('Network response was not ok');
             }
 
             const responseData = await response.json();
@@ -85,6 +86,7 @@ function App() {
             nav('/predicts')
         } catch (error) {
             setLoading(false)
+            toast.error('Error sending data to Flask API');
             console.error('Error sending data to Flask API:', error);
         }
     }
@@ -105,7 +107,8 @@ function App() {
 
             if (!response.ok) {
                 setLoading(false)
-                throw new Error('Network response was not ok');
+                toast.error('i dont receive response from server')
+                // throw new Error('Network response was not ok');
             }
 
             const responseData = await response.json();
@@ -117,6 +120,7 @@ function App() {
             nav('/load-datasets')
         } catch (error) {
             setLoading(false)
+            toast.error('Error sending data to Flask API');
             console.error('Error sending data to Flask API:', error);
         }
     }
