@@ -2,6 +2,14 @@
 
 Welcome to the React Front-End App associated with the Flask API. This front-end application provides a user interface to interact with the Flask API.
 
+![Welcome](./public/images/results/main.png)
+
+![form](./public/images/results/prediction-form.png)
+
+![results](./public/images/results/predictions.png)
+
+![metrics](./public/images/results/metrics.png)
+
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
