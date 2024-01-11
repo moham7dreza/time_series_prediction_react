@@ -87,6 +87,7 @@ export const PredictionPropsForm = () => {
 
     const initialValues = {
         n_steps: 3,
+        test_size: 20,
         n_predict_future_days: 120,
         n_top_models_to_ensemble: 0,
         apply_combinations: false,
@@ -118,185 +119,188 @@ export const PredictionPropsForm = () => {
             <Helmet>
                 <title>Props</title>
             </Helmet>
-            {loading ? <Spinner/> : <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto rounded-2xl shadow-2xl mt-5">
-                <Formik
-                    initialValues={initialValues}
-                    onSubmit={values => submitPredictions(values)} validationSchema={PredictValidation}>
-                    <Form>
-                        <div className="space-y-12">
-                            <div className="border-b border-gray-900/10 pb-12">
-                                <h2 className="text-base font-semibold leading-7 text-gray-800 dark:text-gray-300 dark:hover:text-white">Prediction
-                                    Properties</h2>
-                                {/*<p className="mt-1 text-sm leading-6 text-gray-600">We'll always let you know about*/}
-                                {/*    important*/}
-                                {/*    changes, but you pick what else you want to hear about.</p>*/}
+            {loading ? <Spinner/> :
+                <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto rounded-2xl shadow-2xl mt-5">
+                    <Formik
+                        initialValues={initialValues}
+                        onSubmit={values => submitPredictions(values)} validationSchema={PredictValidation}>
+                        <Form>
+                            <div className="space-y-12">
+                                <div className="border-b border-gray-900/10 pb-12">
+                                    <h2 className="text-base font-semibold leading-7 text-gray-800 dark:text-gray-300 dark:hover:text-white">Prediction
+                                        Properties</h2>
+                                    {/*<p className="mt-1 text-sm leading-6 text-gray-600">We'll always let you know about*/}
+                                    {/*    important*/}
+                                    {/*    changes, but you pick what else you want to hear about.</p>*/}
 
-                                <section className="flex space-x-20 space-y-12">
-                                    <div className="mt-10 space-y-10">
-                                        <fieldset>
-                                            <legend className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Choice
-                                                Series
-                                                ...
-                                            </legend>
-                                            <div className="mt-6 space-y-6">
-                                                {series.map((serie, index) => (
-                                                    <div className="relative flex gap-x-3" key={index}>
-                                                        <div className="flex h-6 items-center">
-                                                            <Field name={`serie-${serie}`} id={`serie-${serie}`}
-                                                                   type="checkbox"
-                                                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
+                                    <section className="flex space-x-20 space-y-12">
+                                        <div className="mt-10 space-y-10">
+                                            <fieldset>
+                                                <legend
+                                                    className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Choice
+                                                    Series
+                                                    ...
+                                                </legend>
+                                                <div className="mt-6 space-y-6">
+                                                    {series.map((serie, index) => (
+                                                        <div className="relative flex gap-x-3" key={index}>
+                                                            <div className="flex h-6 items-center">
+                                                                <Field name={`serie-${serie}`} id={`serie-${serie}`}
+                                                                       type="checkbox"
+                                                                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
+                                                            </div>
+                                                            <div className="text-sm leading-6">
+                                                                <label htmlFor={`serie-${serie}`}
+                                                                       className="font-medium text-gray-800 dark:text-gray-300 dark:hover:text-white">{serie}</label>
+                                                                {/*<p className="text-gray-500">Get notified when someones posts a*/}
+                                                                {/*    comment*/}
+                                                                {/*    on a*/}
+                                                                {/*    posting.</p>*/}
+                                                                <ErrorMessage name={`serie-${serie}`}>
+                                                                    {message => (<div
+                                                                        className={'text-red-500 my-2'}>{message}</div>)}
+                                                                </ErrorMessage>
+                                                            </div>
                                                         </div>
-                                                        <div className="text-sm leading-6">
-                                                            <label htmlFor={`serie-${serie}`}
-                                                                   className="font-medium text-gray-800 dark:text-gray-300 dark:hover:text-white">{serie}</label>
-                                                            {/*<p className="text-gray-500">Get notified when someones posts a*/}
-                                                            {/*    comment*/}
-                                                            {/*    on a*/}
-                                                            {/*    posting.</p>*/}
-                                                            <ErrorMessage name={`serie-${serie}`}>
-                                                                {message => (<div
-                                                                    className={'text-red-500 my-2'}>{message}</div>)}
-                                                            </ErrorMessage>
+                                                    ))}
+
+
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div className="mt-10 space-y-10">
+                                            <fieldset>
+                                                <legend
+                                                    className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Choice
+                                                    Datasets
+                                                    ...
+                                                </legend>
+                                                <div className="mt-6 space-y-6">
+                                                    {datasets.map((dataset, index) => (
+                                                        <div className="relative flex gap-x-3" key={index}>
+                                                            <div className="flex h-6 items-center">
+                                                                <Field name={`dataset-${dataset}`}
+                                                                       id={`dataset-${dataset}`}
+                                                                       type="checkbox"
+                                                                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
+                                                            </div>
+                                                            <div className="text-sm leading-6">
+                                                                <label htmlFor={`dataset-${dataset}`}
+                                                                       className="font-medium text-gray-800 dark:text-gray-300 dark:hover:text-white">{dataset}</label>
+                                                                {/*<p className="text-gray-500">Get notified when someones posts a*/}
+                                                                {/*    comment*/}
+                                                                {/*    on a*/}
+                                                                {/*    posting.</p>*/}
+                                                                <ErrorMessage name={`dataset-${dataset}`}>
+                                                                    {message => (<div
+                                                                        className={'text-red-500 my-2'}>{message}</div>)}
+                                                                </ErrorMessage>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                ))}
+                                                    ))}
 
 
-                                            </div>
-                                        </fieldset>
-                                    </div>
-                                    <div className="mt-10 space-y-10">
-                                        <fieldset>
-                                            <legend className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Choice
-                                                Datasets
-                                                ...
-                                            </legend>
-                                            <div className="mt-6 space-y-6">
-                                                {datasets.map((dataset, index) => (
-                                                    <div className="relative flex gap-x-3" key={index}>
-                                                        <div className="flex h-6 items-center">
-                                                            <Field name={`dataset-${dataset}`} id={`dataset-${dataset}`}
-                                                                   type="checkbox"
-                                                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div className="mt-10 space-y-10">
+                                            <fieldset>
+                                                <legend
+                                                    className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Choice
+                                                    Prices
+                                                    ...
+                                                </legend>
+                                                <div className="mt-6 space-y-6">
+                                                    {prices.map((price, index) => (
+                                                        <div className="relative flex gap-x-3" key={index}>
+                                                            <div className="flex h-6 items-center">
+                                                                <Field name={`price-${price}`} id={`price-${price}`}
+                                                                       type="checkbox"
+                                                                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
+                                                            </div>
+                                                            <div className="text-sm leading-6">
+                                                                <label htmlFor={`price-${price}`}
+                                                                       className="font-medium text-gray-800 dark:text-gray-300 dark:hover:text-white">{price}</label>
+                                                                {/*<p className="text-gray-500">Get notified when someones posts a*/}
+                                                                {/*    comment*/}
+                                                                {/*    on a*/}
+                                                                {/*    posting.</p>*/}
+                                                                <ErrorMessage name={`price-${price}`}>
+                                                                    {message => (<div
+                                                                        className={'text-red-500 my-2'}>{message}</div>)}
+                                                                </ErrorMessage>
+                                                            </div>
                                                         </div>
-                                                        <div className="text-sm leading-6">
-                                                            <label htmlFor={`dataset-${dataset}`}
-                                                                   className="font-medium text-gray-800 dark:text-gray-300 dark:hover:text-white">{dataset}</label>
-                                                            {/*<p className="text-gray-500">Get notified when someones posts a*/}
-                                                            {/*    comment*/}
-                                                            {/*    on a*/}
-                                                            {/*    posting.</p>*/}
-                                                            <ErrorMessage name={`dataset-${dataset}`}>
-                                                                {message => (<div
-                                                                    className={'text-red-500 my-2'}>{message}</div>)}
-                                                            </ErrorMessage>
+                                                    ))}
+
+
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div className={'mt-10 space-y-10'}>
+                                            <fieldset className={'mt-0'}>
+                                                <legend
+                                                    className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Choice
+                                                    Models
+                                                    ...
+                                                </legend>
+                                                <div className="mt-6 space-y-6">
+                                                    {models.map((model, index) => (
+                                                        <div className="relative flex gap-x-3" key={index}>
+                                                            <div className="flex h-6 items-center">
+                                                                <Field name={`model-${model}`} id={`model-${model}`}
+                                                                       type="checkbox"
+                                                                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
+                                                            </div>
+                                                            <div className="text-sm leading-6">
+                                                                <label htmlFor={`model-${model}`}
+                                                                       className="font-medium text-gray-800 dark:text-gray-300 dark:hover:text-white">{model}</label>
+                                                                {/*<p className="text-gray-500">Get notified when someones posts a*/}
+                                                                {/*    comment*/}
+                                                                {/*    on a*/}
+                                                                {/*    posting.</p>*/}
+                                                                <ErrorMessage name={`model-${model}`}>
+                                                                    {message => (<div
+                                                                        className={'text-red-500 my-2'}>{message}</div>)}
+                                                                </ErrorMessage>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                ))}
+                                                    ))}
 
 
-                                            </div>
-                                        </fieldset>
-                                    </div>
-                                    <div className="mt-10 space-y-10">
-                                        <fieldset>
-                                            <legend className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Choice
-                                                Prices
-                                                ...
-                                            </legend>
-                                            <div className="mt-6 space-y-6">
-                                                {prices.map((price, index) => (
-                                                    <div className="relative flex gap-x-3" key={index}>
-                                                        <div className="flex h-6 items-center">
-                                                            <Field name={`price-${price}`} id={`price-${price}`}
-                                                                   type="checkbox"
-                                                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div className={'mt-10 space-y-10'}>
+                                            <fieldset className={'mt-0'}>
+                                                <legend
+                                                    className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Choice
+                                                    Metrics
+                                                    ...
+                                                </legend>
+                                                <div className="mt-6 space-y-6">
+                                                    {metrics.map((metric, index) => (
+                                                        <div className="relative flex gap-x-3" key={index}>
+                                                            <div className="flex h-6 items-center">
+                                                                <Field name={`metric-${metric}`} id={`metric-${metric}`}
+                                                                       type="checkbox"
+                                                                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
+                                                            </div>
+                                                            <div className="text-sm leading-6">
+                                                                <label htmlFor={`metric-${metric}`}
+                                                                       className="font-medium text-gray-800 dark:text-gray-300 dark:hover:text-white">{metric}</label>
+                                                                <ErrorMessage name={`metric-${metric}`}>
+                                                                    {message => (<div
+                                                                        className={'text-red-500 my-2'}>{message}</div>)}
+                                                                </ErrorMessage>
+                                                            </div>
                                                         </div>
-                                                        <div className="text-sm leading-6">
-                                                            <label htmlFor={`price-${price}`}
-                                                                   className="font-medium text-gray-800 dark:text-gray-300 dark:hover:text-white">{price}</label>
-                                                            {/*<p className="text-gray-500">Get notified when someones posts a*/}
-                                                            {/*    comment*/}
-                                                            {/*    on a*/}
-                                                            {/*    posting.</p>*/}
-                                                            <ErrorMessage name={`price-${price}`}>
-                                                                {message => (<div
-                                                                    className={'text-red-500 my-2'}>{message}</div>)}
-                                                            </ErrorMessage>
-                                                        </div>
-                                                    </div>
-                                                ))}
+                                                    ))}
 
 
-                                            </div>
-                                        </fieldset>
-                                    </div>
-                                    <div className={'mt-10 space-y-10'}>
-                                        <fieldset className={'mt-0'}>
-                                            <legend className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Choice
-                                                Models
-                                                ...
-                                            </legend>
-                                            <div className="mt-6 space-y-6">
-                                                {models.map((model, index) => (
-                                                    <div className="relative flex gap-x-3" key={index}>
-                                                        <div className="flex h-6 items-center">
-                                                            <Field name={`model-${model}`} id={`model-${model}`}
-                                                                   type="checkbox"
-                                                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
-                                                        </div>
-                                                        <div className="text-sm leading-6">
-                                                            <label htmlFor={`model-${model}`}
-                                                                   className="font-medium text-gray-800 dark:text-gray-300 dark:hover:text-white">{model}</label>
-                                                            {/*<p className="text-gray-500">Get notified when someones posts a*/}
-                                                            {/*    comment*/}
-                                                            {/*    on a*/}
-                                                            {/*    posting.</p>*/}
-                                                            <ErrorMessage name={`model-${model}`}>
-                                                                {message => (<div
-                                                                    className={'text-red-500 my-2'}>{message}</div>)}
-                                                            </ErrorMessage>
-                                                        </div>
-                                                    </div>
-                                                ))}
-
-
-                                            </div>
-                                        </fieldset>
-                                    </div>
-                                    <div className={'mt-10 space-y-10'}>
-                                        <fieldset className={'mt-0'}>
-                                            <legend className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Choice
-                                                Metrics
-                                                ...
-                                            </legend>
-                                            <div className="mt-6 space-y-6">
-                                                {metrics.map((metric, index) => (
-                                                    <div className="relative flex gap-x-3" key={index}>
-                                                        <div className="flex h-6 items-center">
-                                                            <Field name={`metric-${metric}`} id={`metric-${metric}`}
-                                                                   type="checkbox"
-                                                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
-                                                        </div>
-                                                        <div className="text-sm leading-6">
-                                                            <label htmlFor={`metric-${metric}`}
-                                                                   className="font-medium text-gray-800 dark:text-gray-300 dark:hover:text-white">{metric}</label>
-                                                            <ErrorMessage name={`metric-${metric}`}>
-                                                                {message => (<div
-                                                                    className={'text-red-500 my-2'}>{message}</div>)}
-                                                            </ErrorMessage>
-                                                        </div>
-                                                    </div>
-                                                ))}
-
-
-                                            </div>
-                                        </fieldset>
-                                    </div>
-                                    <div className="mt-10 border-b border-gray-900/10 pb-12">
-                                        <legend className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Enter props
-                                            ...
-                                        </legend>
+                                                </div>
+                                            </fieldset>
+                                        </div>
                                         <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                                             <div className="sm:col-span-4">
                                                 <label htmlFor="n_steps"
@@ -310,6 +314,21 @@ export const PredictionPropsForm = () => {
                                                     />
                                                 </div>
                                                 <ErrorMessage name={'n_steps'}>
+                                                    {message => (<div className={'text-red-500 my-2'}>{message}</div>)}
+                                                </ErrorMessage>
+                                            </div>
+                                            <div className="sm:col-span-4">
+                                                <label htmlFor="test_size"
+                                                       className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Test
+                                                    Data Percentage</label>
+                                                <div className="mt-2">
+                                                    <Field type="number" name="test_size"
+                                                           autoComplete="3"
+                                                        // className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                           className="block w-full rounded-md py-1.5 px-2 ps-3 bg-transparent dark:bg-slate-800 transition duration-300 ease-in-out border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                                    />
+                                                </div>
+                                                <ErrorMessage name={'test_size'}>
                                                     {message => (<div className={'text-red-500 my-2'}>{message}</div>)}
                                                 </ErrorMessage>
                                             </div>
@@ -357,7 +376,8 @@ export const PredictionPropsForm = () => {
                                                             Apply Combinations to Top Models
                                                         </label>
                                                         <ErrorMessage name={'apply_combinations'}>
-                                                            {message => (<div className={'text-red-500 my-2'}>{message}</div>)}
+                                                            {message => (
+                                                                <div className={'text-red-500 my-2'}>{message}</div>)}
                                                         </ErrorMessage>
                                                     </div>
                                                 </div>
@@ -369,20 +389,19 @@ export const PredictionPropsForm = () => {
                                                 />
                                             </div>
                                         </div>
-                                    </div>
-                                </section>
+                                    </section>
+                                </div>
                             </div>
-                        </div>
 
-                        <div className="mt-6 flex items-center justify-end gap-x-6">
-                            {/*<button type="button" className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Cancel</button>*/}
-                            <button type="submit"
-                                    className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save
-                            </button>
-                        </div>
-                    </Form>
-                </Formik>
-            </div>}
+                            <div className="mt-6 flex items-center justify-end gap-x-6">
+                                {/*<button type="button" className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Cancel</button>*/}
+                                <button type="submit"
+                                        className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Predict
+                                </button>
+                            </div>
+                        </Form>
+                    </Formik>
+                </div>}
         </>
     )
         ;
