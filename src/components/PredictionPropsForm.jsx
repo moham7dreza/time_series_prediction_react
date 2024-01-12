@@ -88,7 +88,8 @@ export const PredictionPropsForm = () => {
     const initialValues = {
         n_steps: 3,
         test_size: 20,
-        epochs: 100,
+        univariate_epochs: 100,
+        multivariate_epochs: 500,
         batch_size: 32,
         dropout_rate: 20,
         n_predict_future_days: 120,
@@ -170,6 +171,38 @@ export const PredictionPropsForm = () => {
 
                                                 </div>
                                             </fieldset>
+                                            <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-1">
+                                                <div className="sm:col-span-4">
+                                                    <label htmlFor="univariate_epochs"
+                                                           className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Number
+                                                        of Epochs For Univariate Series</label>
+                                                    <div className="mt-2">
+                                                        <Field type="number" name="univariate_epochs"
+                                                               autoComplete="3"
+                                                            // className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                               className="block w-full rounded-md py-1.5 px-2 ps-3 bg-transparent dark:bg-slate-800 transition duration-300 ease-in-out border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                                        />
+                                                    </div>
+                                                    <ErrorMessage name={'univariate_epochs'}>
+                                                        {message => (<div className={'text-red-500 my-2'}>{message}</div>)}
+                                                    </ErrorMessage>
+                                                </div>
+                                                <div className="sm:col-span-4">
+                                                    <label htmlFor="multivariate_epochs"
+                                                           className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Number
+                                                        of Epochs For Multivariate Series</label>
+                                                    <div className="mt-2">
+                                                        <Field type="number" name="multivariate_epochs"
+                                                               autoComplete="3"
+                                                            // className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                               className="block w-full rounded-md py-1.5 px-2 ps-3 bg-transparent dark:bg-slate-800 transition duration-300 ease-in-out border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                                        />
+                                                    </div>
+                                                    <ErrorMessage name={'multivariate_epochs'}>
+                                                        {message => (<div className={'text-red-500 my-2'}>{message}</div>)}
+                                                    </ErrorMessage>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div className="mt-10 space-y-10">
                                             <fieldset>
@@ -329,21 +362,6 @@ export const PredictionPropsForm = () => {
                                                     />
                                                 </div>
                                                 <ErrorMessage name={'n_steps'}>
-                                                    {message => (<div className={'text-red-500 my-2'}>{message}</div>)}
-                                                </ErrorMessage>
-                                            </div>
-                                            <div className="sm:col-span-4">
-                                                <label htmlFor="epochs"
-                                                       className="block text-sm font-medium leading-6 text-gray-800 dark:text-gray-300 dark:hover:text-white">Number
-                                                    of Epochs</label>
-                                                <div className="mt-2">
-                                                    <Field type="number" name="epochs"
-                                                           autoComplete="3"
-                                                        // className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-800 dark:text-gray-300 dark:hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                           className="block w-full rounded-md py-1.5 px-2 ps-3 bg-transparent dark:bg-slate-800 transition duration-300 ease-in-out border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                                                    />
-                                                </div>
-                                                <ErrorMessage name={'epochs'}>
                                                     {message => (<div className={'text-red-500 my-2'}>{message}</div>)}
                                                 </ErrorMessage>
                                             </div>
