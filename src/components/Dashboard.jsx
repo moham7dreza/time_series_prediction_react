@@ -4,7 +4,7 @@ export const Dashboard = () => {
     return (
         <>
             <Helmet>
-                <title>Dashborad</title>
+                <title>Dashboard</title>
             </Helmet>
             <body className="bg-gray-50 dark:bg-slate-900">
             {/* ========== HEADER ========== */}
