@@ -7,14 +7,15 @@ import Datepicker from "react-tailwindcss-datepicker";
 import {Spinner} from "./Spinner";
 import * as YUP from "yup";
 import {Helmet} from "react-helmet-async";
+import config from "../config/app.js";
 
 export const DatasetPropsForm = () => {
     const {
         submitDatasets, date, handleDateChange, loading, datasets, setDatasets, prices, setPrices
     } = useContext(StockContext)
 
-    const [datasetNames] = useFetch('http://127.0.0.1:5000/datasets-name')
-    const [pricesNames] = useFetch('http://127.0.0.1:5000/prices-name')
+    const [datasetNames] = useFetch(config.api + 'datasets-name')
+    const [pricesNames] = useFetch(config.api + 'prices-name')
 
     useEffect(() => {
         if (datasetNames && datasetNames.status === 'OK') {
