@@ -7,6 +7,7 @@ import Datepicker from "react-tailwindcss-datepicker";
 import {Spinner} from "./Spinner";
 import * as YUP from "yup";
 import {Helmet} from "react-helmet-async";
+import config from "../config/app";
 
 export const PredictionPropsForm = () => {
     const {
@@ -26,12 +27,12 @@ export const PredictionPropsForm = () => {
         setLastPredProps, metrics, setMetrics,
     } = useContext(StockContext)
 
-    const [datasetNames] = useFetch('http://127.0.0.1:5000/datasets-name')
-    const [modelsNames] = useFetch('http://127.0.0.1:5000/models-name')
-    const [seriesNames] = useFetch('http://127.0.0.1:5000/series-name')
-    const [pricesNames] = useFetch('http://127.0.0.1:5000/prices-name')
-    const [metricsNames] = useFetch('http://127.0.0.1:5000/metrics-name')
-    const [lastPredictionProps] = useFetch('http://127.0.0.1:5000/last-predict-props')
+    const [datasetNames] = useFetch(config.apiUrl + 'datasets-name')
+    const [modelsNames] = useFetch(config.apiUrl + 'models-name')
+    const [seriesNames] = useFetch(config.apiUrl + 'series-name')
+    const [pricesNames] = useFetch(config.apiUrl + 'prices-name')
+    const [metricsNames] = useFetch(config.apiUrl + 'metrics-name')
+    const [lastPredictionProps] = useFetch(config.apiUrl + 'last-predict-props')
 
     useEffect(() => {
         if (datasetNames && datasetNames.status === 'OK') {

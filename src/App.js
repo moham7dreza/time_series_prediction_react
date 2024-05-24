@@ -14,6 +14,7 @@ import {transformObject} from "./helpers/Transformers";
 import StockResultChart from "./components/StockResultChart";
 import {DatasetPropsForm} from "./components/DatasetPropsForm";
 import {Helmet, HelmetProvider} from 'react-helmet-async';
+import config from "./config/app";
 
 function App() {
     const [predicts, setPredicts] = useState({})
@@ -53,7 +54,7 @@ function App() {
         setLoading(true)
         const data = transformObject({...values, ...date})
         // console.log(data)
-        const apiUrl = 'http://127.0.0.1:5000/make-prediction';
+        const apiUrl = config.apiUrl + 'make-prediction';
         try {
             const response = await fetch(apiUrl, {
                 method: 'POST',
@@ -94,7 +95,7 @@ function App() {
         setLoading(true)
         const data = transformObject({...values, ...date})
         // console.log(data)
-        const apiUrl = 'http://127.0.0.1:5000/datasets';
+        const apiUrl = config.apiUrl + 'datasets';
         try {
             const response = await fetch(apiUrl, {
                 method: 'POST',
