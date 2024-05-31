@@ -93,7 +93,7 @@ export const PredictionPropsForm = () => {
         multivariate_epochs: 500,
         batch_size: 32,
         dropout_rate: 20,
-        n_predict_future_days: 120,
+        n_predict_future_days: 14,
         n_top_models_to_ensemble: 0,
         apply_combinations: false,
         ...series.reduce((acc, serie) => {
